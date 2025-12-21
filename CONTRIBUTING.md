@@ -1,7 +1,6 @@
 # Contribution Guide
 
-Thanks for helping improve AtlasEconomica-FTSM. This repo focuses on data prep
-and time series forecasting experiments using Chronos-2.
+Thanks for helping improve AtlasEconomica-FTSM. This repo focuses on data prep and time series forecasting experiments.
 
 ## Quick start
 1. Create a virtual environment and install dependencies.
@@ -10,9 +9,9 @@ and time series forecasting experiments using Chronos-2.
 See `README.md` for exact setup commands and data paths.
 
 ## Project layout
-- `modules/`: data preparation utilities (CRSP, holidays).
+- `modules/`: data preparation utilities.
 - `models/`: forecasting and modeling scripts.
-- `tests/`: quick smoke checks and examples.
+- `tests/`: quick checks and examples.
 - `notebooks/`: exploratory work.
 - `data/`: local datasets (gitignored).
 
@@ -24,7 +23,7 @@ See `README.md` for exact setup commands and data paths.
 
 ## Code style
 - Keep scripts runnable from the repo root.
-- Favor clear variable names over cleverness.
+- Use clear variable names.
 - Add brief comments only when logic is non-obvious.
 - Keep paths relative using `Path` or `os.path` helpers.
 
