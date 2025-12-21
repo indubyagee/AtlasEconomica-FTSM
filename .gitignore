@@ -207,9 +207,14 @@ marimo/_lsp/
 __marimo__/
 
 # Misc. folders
-logs/**
-data/fred/***
-exports/fred**
-exports/crsp/**
+logs/*
+!logs/.gitkeep
+exports/*
+!exports/.gitkeep
+data/*
+!data/.gitkeep
 
 temp/
+
+# Development notes
+NOTES.md
