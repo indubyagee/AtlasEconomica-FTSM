@@ -1,0 +1,10 @@
+queries:
+  inputs:
+    ticker: User-input
+    dataset:
+      fields: ["crsp, wrds, compustat, fred, yfinance, holidays"]
+    date:
+      beg_dt: User-input
+      end_dt: User-input
+    variables:
+      - User-inputs

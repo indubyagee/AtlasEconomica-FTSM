@@ -1,0 +1,237 @@
+version: "0.1.0"
+name: "market regime taxonomy"
+timezone: "CST"
+calendar: "NYSE"
+frequency: "1D"
+
+# ---------------------------
+# Inputs expected by the regime system
+# ---------------------------
+inputs:
+  market_index:
+    description: "Primary market proxy (e.g., SPX, VTI) used for returns/vol/corr baselines."
+    fields: ["open", "close", "high", "low", "volume"]
+  cross_section:
+    description: "Universe of assets used for correlation/dispersion metrics."
+    fields: ["close", "volume"]
+    min_assets: 50
+  optional_macro:
+    description: "Optional macro/policy series."
+    fields:
+      - "effr"
+      - "sofr"
+      - "t10y2y"
+      - "t10y3m"
+      - "t5yie"
+      - "t10yie"
+
+# ---------------------------
+# Feature definitions
+# ---------------------------
+features:
+  # Trend / return direction
+  trend:
+    ret_1d: {type: "return", source: "market_index.close", window: 1}
+    ret_21d: {type: "return", source: "market_index.close", window: 21}
+    ema_fast: {type: "ema", source: "market_index.close", span: 21}
+    ema_slow: {type: "ema", source: "market_index.close", span: 126}
+    trend_strength:
+      type: "normalized_slope"
+      source: "market_index.close"
+      window: 63
+      normalize_by: "realized_vol_21d"
+
+  # Volatility / tail risk
+  vol:
+    realized_vol_21d:
+      type: "realized_vol"
+      source: "market_index.close"
+      window: 21
+      annualization: 252
+    realized_vol_63d:
+      type: "realized_vol"
+      source: "market_index.close"
+      window: 63
+      annualization: 252
+    vol_of_vol_63d:
+      type: "vol_of_vol"
+      source: "vol.realized_vol_21d"
+      window: 63
+    downside_vol_63d:
+      type: "downside_vol"
+      source: "market_index.close"
+      window: 63
+      annualization: 252
+    drawdown_126d:
+      type: "max_drawdown"
+      source: "market_index.close"
+      window: 126
+
+  # Correlation / topology
+  corr:
+    avg_pairwise_corr_21d:
+      type: "avg_pairwise_corr"
+      source: "cross_section.close"
+      window: 21
+      method: "pearson"
+      returns_window: 1
+      min_overlap: 15
+    corr_pca1_share_63d:
+      type: "pca_first_component_share"
+      source: "cross_section.close"
+      window: 63
+      returns_window: 1
+
+  # Liquidity / market microstructure approximations
+  liq:
+    volume_z_21d:
+      type: "zscore"
+      source: "market_index.volume"
+      window: 21
+    amihud_21d:
+      type: "amihud_illiquidity"
+      source_price: "market_index.close"
+      source_volume: "market_index.volume"
+      window: 21
+    spread_proxy:
+      type: "high_low_spread_proxy"
+      source_high: "market_index.high"
+      source_low: "market_index.low"
+      source_close: "market_index.close"
+      window: 21
+
+  # Macro / policy (optional)
+  macro:
+    yield_curve_slope:
+      type: "spread"
+      long: "optional_macro.t10y2y"
+      short: 0
+    policy_rate:
+      type: "level"
+      source: "optional_macro.effr"
+    inflation_breakeven_10y:
+      type: "level"
+      source: "optional_macro.t10yie"
+
+# ---------------------------
+# Axis definitions: continuous score -> discrete bin
+# ---------------------------
+axes:
+  trend_regime:
+    score: "trend.trend_strength"
+    bins:
+      - {name: "downtrend", rule: "score <= q20"}
+      - {name: "range",     rule: "q20 < score < q80"}
+      - {name: "uptrend",   rule: "score >= q80"}
+
+  vol_regime:
+    score: "vol.realized_vol_21d"
+    bins:
+      - {name: "low",    rule: "score <= q33"}
+      - {name: "medium", rule: "q33 < score < q67"}
+      - {name: "high",   rule: "score >= q67"}
+
+  corr_regime:
+    score: "corr.corr_pca1_share_63d"
+    bins:
+      - {name: "decorrelated", rule: "score <= q33"}
+      - {name: "mixed",        rule: "q33 < score < q67"}
+      - {name: "correlated",   rule: "score >= q67"}
+
+  liquidity_regime:
+    score: "liq.amihud_21d"
+    bins:
+      - {name: "abundant", rule: "score <= q33"}   # lower Amihud = more liquid
+      - {name: "normal",   rule: "q33 < score < q67"}
+      - {name: "stressed", rule: "score >= q67"}
+
+  macro_policy_regime:
+    optional: true
+    score: "macro.policy_rate"
+    bins:
+      - {name: "accommodative", rule: "score <= q33"}
+      - {name: "neutral",       rule: "q33 < score < q67"}
+      - {name: "restrictive",   rule: "score >= q67"}
+
+# ---------------------------
+# Composite regimes (human-meaningful states)
+# ---------------------------
+composites:
+  - name: "risk_on_stable"
+    when:
+      trend_regime: "uptrend"
+      vol_regime: "low"
+      corr_regime: "decorrelated"
+      liquidity_regime: "abundant"
+
+  - name: "risk_on_fragile"
+    when:
+      trend_regime: "uptrend"
+      vol_regime: ["medium", "high"]
+      corr_regime: ["mixed", "correlated"]
+      liquidity_regime: ["normal", "stressed"]
+
+  - name: "transition_mixed"
+    when:
+      trend_regime: "range"
+      vol_regime: ["medium", "high"]
+
+  - name: "risk_off_orderly"
+    when:
+      trend_regime: "downtrend"
+      vol_regime: "medium"
+      liquidity_regime: ["normal", "abundant"]
+
+  - name: "risk_off_disorderly"
+    when:
+      trend_regime: "downtrend"
+      vol_regime: "high"
+      corr_regime: "correlated"
+
+  - name: "crisis"
+    when:
+      vol_regime: "high"
+      corr_regime: "correlated"
+      liquidity_regime: "stressed"
+      # trend can be downtrend or abrupt chop; don't over-constrain
+
+  - name: "recovery"
+    when:
+      trend_regime: ["range", "uptrend"]
+      vol_regime: ["medium", "low"]
+      corr_regime: ["mixed", "decorrelated"]
+      liquidity_regime: ["normal", "abundant"]
+
+# ---------------------------
+# Quantile calibration / leakage controls
+# ---------------------------
+calibration:
+  quantiles:
+    method: "rolling_or_expanding"
+    window_days: 756          # ~3y trading days; change as needed
+    expanding_start_days: 504 # ~2y minimum for stable quantiles
+  leakage_policy:
+    fit_quantiles_on: "past_only"   # strict: at t use data <= t
+    label_lag_days: 1               # label at t uses features up to t-1 if desired
+
+# ---------------------------
+# Shift taxonomy (events)
+# ---------------------------
+shifts:
+  detectors:
+    - name: "vol_jump"
+      rule: "vol.realized_vol_21d / vol.realized_vol_63d >= 1.5"
+    - name: "corr_spike"
+      rule: "corr.avg_pairwise_corr_21d >= q90"
+    - name: "liquidity_break"
+      rule: "liq.amihud_21d >= q90"
+    - name: "trend_break"
+      rule: "sign(ema_fast - ema_slow) changes and abs(trend_strength) drops below q50"
+
+  speed:
+    abrupt:
+      rule: "event_detected within <= 5 trading days"
+    gradual:
+      rule: "axis_bin changes persistently over >= 20 trading days"
+    oscillatory:
+      rule: ">= 3 bin flips within 30 trading days"

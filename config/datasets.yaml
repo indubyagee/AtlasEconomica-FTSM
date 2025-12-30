@@ -1,0 +1,2478 @@
+version: 1
+
+defaults:
+  storage:
+    raw:
+      format: csv.gz
+      compression: gzip
+      delimiter: ","
+      encoding: utf-8
+    conversion:
+      format: parquet
+  indexing:
+    timezone: "UTC"
+    
+datasets:
+  crspa:
+    crsp_a_stock:
+      dsfv2:
+        title: "CRSP Daily Stock File v2 (WRDS)"
+        library: "crsp"
+        wrds_metadata:
+          product: "crsp_a_stock"
+          library: "crspa"
+          file: "wrds_dsfv2_query"
+          date range:
+            dvar: "dlycaldt"
+            dvar_descr: "Daily Calendar Date"
+            begdt: 1925-12-31
+            enddt: 2024-12-31
+          last updated on: 2025-02-08
+          update frequency: "Annually"
+        storage:
+          path: "./data/raw/crsp/dsfv2/data.csv.gz"
+          format: csv.gz
+        keys:
+          - permno
+          - dlycaldt
+        index:
+          timestamp_column: dlycaldt
+          frequency: "D"
+        schema:
+          variables:
+            permno:
+              type: int
+              description: "(permno) PERMNO"
+              category: idinfo
+              category_name: "Identifying Information"
+            secinfostartdt:
+              type: date
+              description: "(secinfostartdt) Security Information Start Date"
+              category: idinfo
+              category_name: "Identifying Information"
+            secinfoenddt:
+              type: date
+              description: "(secinfoenddt) Security Information End Date"
+              category: idinfo
+              category_name: "Identifying Information"
+            securitybegdt:
+              type: date
+              description: "(securitybegdt) Begin Date of Stock Data"
+              category: idinfo
+              category_name: "Identifying Information"
+            securityenddt:
+              type: date
+              description: "(securityenddt) End Date of Stock Data"
+              category: idinfo
+              category_name: "Identifying Information"
+            securityhdrflg:
+              type: string
+              description: "(securityhdrflg) Security Header Flag"
+              category: idinfo
+              category_name: "Identifying Information"
+            hdrcusip:
+              type: string
+              description: "(hdrcusip) Header CUSIP - 8 Characters"
+              category: idinfo
+              category_name: "Identifying Information"
+            hdrcusip9:
+              type: string
+              description: "(hdrcusip9) Header CUSIP - 9 Characters"
+              category: idinfo
+              category_name: "Identifying Information"
+            cusip:
+              type: string
+              description: "(cusip) CUSIP"
+              category: idinfo
+              category_name: "Identifying Information"
+            cusip9:
+              type: string
+              description: "(cusip9) CUSIP9"
+              category: idinfo
+              category_name: "Identifying Information"
+            primaryexch:
+              type: string
+              description: "(primaryexch) Primary Exchange"
+              category: idinfo
+              category_name: "Identifying Information"
+            conditionaltype:
+              type: string
+              description: "(conditionaltype) Conditional Type"
+              category: idinfo
+              category_name: "Identifying Information"
+            exchangetier:
+              type: string
+              description: "(exchangetier) Exchange Tier"
+              category: idinfo
+              category_name: "Identifying Information"
+            tradingstatusflg:
+              type: string
+              description: "(tradingstatusflg) Trading Status Flag"
+              category: idinfo
+              category_name: "Identifying Information"
+            securitynm:
+              type: string
+              description: "(securitynm) Security Name"
+              category: idinfo
+              category_name: "Identifying Information"
+            shareclass:
+              type: string
+              description: "(shareclass) Share Class"
+              category: idinfo
+              category_name: "Identifying Information"
+            usincflg:
+              type: string
+              description: "(usincflg) US Incorporation Flag"
+              category: idinfo
+              category_name: "Identifying Information"
+            issuertype:
+              type: string
+              description: "(issuertype) Issuer Type"
+              category: idinfo
+              category_name: "Identifying Information"
+            securitytype:
+              type: string
+              description: "(securitytype) Security Type"
+              category: idinfo
+              category_name: "Identifying Information"
+            securitysubtype:
+              type: string
+              description: "(securitysubtype) Security Sub-Type"
+              category: idinfo
+              category_name: "Identifying Information"
+            sharetype:
+              type: string
+              description: "(sharetype) Share Type"
+              category: idinfo
+              category_name: "Identifying Information"
+            securityactiveflg:
+              type: string
+              description: "(securityactiveflg) Security Active Flag"
+              category: idinfo
+              category_name: "Identifying Information"
+            delactiontype:
+              type: string
+              description: "(delactiontype) Delisting Corporate Action Type"
+              category: idinfo
+              category_name: "Identifying Information"
+            delstatustype:
+              type: string
+              description: "(delstatustype) Delisting Completion Status Type"
+              category: idinfo
+              category_name: "Identifying Information"
+            delreasontype:
+              type: string
+              description: "(delreasontype) Delisting Reason Type"
+              category: idinfo
+              category_name: "Identifying Information"
+            delpaymenttype:
+              type: string
+              description: "(delpaymenttype) Delisting Payment Summary Type"
+              category: idinfo
+              category_name: "Identifying Information"
+            ticker:
+              type: string
+              description: "(ticker) Ticker"
+              category: idinfo
+              category_name: "Identifying Information"
+            tradingsymbol:
+              type: string
+              description: "(tradingsymbol) Trading Symbol"
+              category: idinfo
+              category_name: "Identifying Information"
+            permco:
+              type: int
+              description: "(permco) PERMCO"
+              category: idinfo
+              category_name: "Identifying Information"
+            siccd:
+              type: int
+              description: "(siccd) Sic Code"
+              category: idinfo
+              category_name: "Identifying Information"
+            naics:
+              type: string
+              description: "(naics) NAICS Code"
+              category: idinfo
+              category_name: "Identifying Information"
+            icbindustry:
+              type: string
+              description: "(icbindustry) ICB Industry Code"
+              category: idinfo
+              category_name: "Identifying Information"
+            issuernm:
+              type: string
+              description: "(issuernm) Issuer Name"
+              category: idinfo
+              category_name: "Identifying Information"
+            yyyymmdd:
+              type: int
+              description: "(yyyymmdd) YYYYMMDD - Daily Calendar Period Key"
+              category: tsinfo
+              category_name: "Time Series Information"
+            dlycaldt:
+              type: date
+              description: "(dlycaldt) Daily Calendar Date"
+              category: tsinfo
+              category_name: "Time Series Information"
+            dlydelflg:
+              type: string
+              description: "(dlydelflg) Daily Delisting Flag"
+              category: tsinfo
+              category_name: "Time Series Information"
+            dlyprc:
+              type: decimal
+              description: "(dlyprc) Daily Price"
+              category: tsinfo
+              category_name: "Time Series Information"
+            dlyprcflg:
+              type: string
+              description: "(dlyprcflg) Daily Price Flag"
+              category: tsinfo
+              category_name: "Time Series Information"
+            dlycap:
+              type: decimal
+              description: "(dlycap) Daily Capitalization"
+              category: tsinfo
+              category_name: "Time Series Information"
+            dlycapflg:
+              type: string
+              description: "(dlycapflg) Daily Capitalization Flag"
+              category: tsinfo
+              category_name: "Time Series Information"
+            dlyprevprc:
+              type: decimal
+              description: "(dlyprevprc) Daily Previous Price"
+              category: tsinfo
+              category_name: "Time Series Information"
+            dlyprevprcflg:
+              type: string
+              description: "(dlyprevprcflg) Daily Previous Price Flag"
+              category: tsinfo
+              category_name: "Time Series Information"
+            dlyprevdt:
+              type: date
+              description: "(dlyprevdt) Daily Previous Price Date"
+              category: tsinfo
+              category_name: "Time Series Information"
+            dlyprevcap:
+              type: decimal
+              description: "(dlyprevcap) Daily Previous Capitalization"
+              category: tsinfo
+              category_name: "Time Series Information"
+            dlyprevcapflg:
+              type: string
+              description: "(dlyprevcapflg) Daily Previous Capitalization Flag"
+              category: tsinfo
+              category_name: "Time Series Information"
+            dlyret:
+              type: decimal
+              description: "(dlyret) Daily Total Return"
+              category: tsinfo
+              category_name: "Time Series Information"
+            dlyretx:
+              type: decimal
+              description: "(dlyretx) Daily Price Return"
+              category: tsinfo
+              category_name: "Time Series Information"
+            dlyreti:
+              type: decimal
+              description: "(dlyreti) Daily Income Return"
+              category: tsinfo
+              category_name: "Time Series Information"
+            dlyretmissflg:
+              type: string
+              description: "(dlyretmissflg) Daily Return Missing Flag"
+              category: tsinfo
+              category_name: "Time Series Information"
+            dlyretdurflg:
+              type: string
+              description: "(dlyretdurflg) Daily Return Duration Flag"
+              category: tsinfo
+              category_name: "Time Series Information"
+            dlyorddivamt:
+              type: decimal
+              description: "(dlyorddivamt) Daily Ordinary Dividend Amount"
+              category: tsinfo
+              category_name: "Time Series Information"
+            dlynonorddivamt:
+              type: decimal
+              description: "(dlynonorddivamt) Daily Non-Ordinary Dividend Amount"
+              category: tsinfo
+              category_name: "Time Series Information"
+            dlyfacprc:
+              type: decimal
+              description: "(dlyfacprc) Daily Factor To Adjust Price"
+              category: tsinfo
+              category_name: "Time Series Information"
+            dlydistretflg:
+              type: string
+              description: "(dlydistretflg) Daily Distribution Return Impact Flag"
+              category: tsinfo
+              category_name: "Time Series Information"
+            dlyvol:
+              type: decimal
+              description: "(dlyvol) Daily Volume"
+              category: tsinfo
+              category_name: "Time Series Information"
+            dlyclose:
+              type: decimal
+              description: "(dlyclose) Daily Close"
+              category: tsinfo
+              category_name: "Time Series Information"
+            dlylow:
+              type: decimal
+              description: "(dlylow) Daily Low"
+              category: tsinfo
+              category_name: "Time Series Information"
+            dlyhigh:
+              type: decimal
+              description: "(dlyhigh) Daily High"
+              category: tsinfo
+              category_name: "Time Series Information"
+            dlybid:
+              type: decimal
+              description: "(dlybid) Daily Bid"
+              category: tsinfo
+              category_name: "Time Series Information"
+            dlyask:
+              type: decimal
+              description: "(dlyask) Daily Ask"
+              category: tsinfo
+              category_name: "Time Series Information"
+            dlyopen:
+              type: decimal
+              description: "(dlyopen) Daily Open"
+              category: tsinfo
+              category_name: "Time Series Information"
+            dlynumtrd:
+              type: int
+              description: "(dlynumtrd) Daily Number Of Trades"
+              category: tsinfo
+              category_name: "Time Series Information"
+            dlymmcnt:
+              type: int
+              description: "(dlymmcnt) Daily Market Maker Count"
+              category: tsinfo
+              category_name: "Time Series Information"
+            dlyprcvol:
+              type: decimal
+              description: "(dlyprcvol) Daily Price Volume"
+              category: tsinfo
+              category_name: "Time Series Information"
+            shrstartdt:
+              type: date
+              description: "(shrstartdt) Share Information Start Date"
+              category: shrinfo
+              category_name: "Share Information"
+            shrenddt:
+              type: date
+              description: "(shrenddt) Share Information End Date"
+              category: shrinfo
+              category_name: "Share Information"
+            shrout:
+              type: int
+              description: "(shrout) Shares Outstanding"
+              category: shrinfo
+              category_name: "Share Information"
+            shrsource:
+              type: string
+              description: "(shrsource) Share Change Source Type"
+              category: shrinfo
+              category_name: "Share Information"
+            shrfactype:
+              type: string
+              description: "(shrfactype) Share Factor Type"
+              category: shrinfo
+              category_name: "Share Information"
+            shradrflg:
+              type: string
+              description: "(shradrflg) Share Adr Flag"
+              category: shrinfo
+              category_name: "Share Information"
+            disexdt:
+              type: date
+              description: "(disexdt) Ex-Distribution Date"
+              category: disinfo
+              category_name: "Distribution Information"
+            disseqnbr:
+              type: int
+              description: "(disseqnbr) Distribution Sequence Number"
+              category: disinfo
+              category_name: "Distribution Information"
+            disordinaryflg:
+              type: string
+              description: "(disordinaryflg) Distribution Ordinary Dividend Flag"
+              category: disinfo
+              category_name: "Distribution Information"
+            distype:
+              type: string
+              description: "(distype) Distribution Type"
+              category: disinfo
+              category_name: "Distribution Information"
+            disfreqtype:
+              type: string
+              description: "(disfreqtype) Distribution Frequency Type"
+              category: disinfo
+              category_name: "Distribution Information"
+            dispaymenttype:
+              type: string
+              description: "(dispaymenttype) Distribution Payment Method Type"
+              category: disinfo
+              category_name: "Distribution Information"
+            disdetailtype:
+              type: string
+              description: "(disdetailtype) Distribution Detail Type"
+              category: disinfo
+              category_name: "Distribution Information"
+            distaxtype:
+              type: string
+              description: "(distaxtype) Distribution Tax Status Type"
+              category: disinfo
+              category_name: "Distribution Information"
+            disorigcurtype:
+              type: string
+              description: "(disorigcurtype) Distribution Original Currency Type"
+              category: disinfo
+              category_name: "Distribution Information"
+            disdivamt:
+              type: decimal
+              description: "(disdivamt) Dividend Amount"
+              category: disinfo
+              category_name: "Distribution Information"
+            disfacpr:
+              type: decimal
+              description: "(disfacpr) Factor To Adjust Price"
+              category: disinfo
+              category_name: "Distribution Information"
+            disfacshr:
+              type: decimal
+              description: "(disfacshr) Factor To Adjust Shares"
+              category: disinfo
+              category_name: "Distribution Information"
+            disdeclaredt:
+              type: date
+              description: "(disdeclaredt) Declaration Date"
+              category: disinfo
+              category_name: "Distribution Information"
+            disrecorddt:
+              type: date
+              description: "(disrecorddt) Record Date"
+              category: disinfo
+              category_name: "Distribution Information"
+            dispaydt:
+              type: date
+              description: "(dispaydt) Payment Date"
+              category: disinfo
+              category_name: "Distribution Information"
+            dispermno:
+              type: int
+              description: "(dispermno) PERMNO of the Security Received"
+              category: disinfo
+              category_name: "Distribution Information"
+            dispermco:
+              type: int
+              description: "(dispermco) PERMCO of the Issuer Providing Payment"
+              category: disinfo
+              category_name: "Distribution Information"
+            nasdcompno:
+              type: int
+              description: "(nasdcompno) Nasdaq Company Number"
+              category: nasdinfo
+              category_name: "NASDAQ Information"
+            nasdissuno:
+              type: int
+              description: "(nasdissuno) Nasdaq Issue Number"
+              category: nasdinfo
+              category_name: "NASDAQ Information"
+            vwretd:
+              type: decimal
+              description: "(vwretd) Value-weighted return including dividends"
+              category: mktinfo
+              category_name: "Market Information (NYSE/AMEX/NASDAQ/ARCA)"
+            vwretx:
+              type: decimal
+              description: "(vwretx) Value-weighted return excluding dividends"
+              category: mktinfo
+              category_name: "Market Information (NYSE/AMEX/NASDAQ/ARCA)"
+            ewretd:
+              type: decimal
+              description: "(ewretd) Equal-weighted return including dividends"
+              category: mktinfo
+              category_name: "Market Information (NYSE/AMEX/NASDAQ/ARCA)"
+            ewretx:
+              type: decimal
+              description: "(ewretx) Equal-weighted return excluding dividends"
+              category: mktinfo
+              category_name: "Market Information (NYSE/AMEX/NASDAQ/ARCA)"
+            sprtrn:
+              type: decimal
+              description: "(sprtrn) Return on the S&P 500 Index"
+              category: mktinfo
+              category_name: "Market Information (NYSE/AMEX/NASDAQ/ARCA)"
+          pipeline:
+              timestamp: dlycaldt
+              id: permno
+              price: dlyprc
+              returns: dlyret
+              volume: dlyvol
+              shares_out: shrout
+
+      dsmi:
+        title: "CRSP Daily Stock Market Index File"
+        library: "crsp"      
+        wrds_metadata:
+          product: "crsp_a_stock"
+          library: "crspa"
+          file: "wrds_dailyindexret_query"
+          date range:
+            dvar: "dlycaldt"
+            dvar_descr: "Daily Calendar Date"
+            begdt: 1925-12-31
+            enddt: 2024-12-31
+          last updated on: 2025-02-08
+          update frequency: "Annually"
+        storage:
+          path: "./data/raw/crsp/dsmi/data.csv.gz"
+          format: csv.gz
+        keys:
+          - dlycaldt
+        index:
+          timestamp_column: dlycaldt
+          frequency: "D"
+        schema:
+          variables:
+            dlycaldt:
+              type: date
+              description: "(dlycaldt) Daily Calendar Date"
+            vwretd:
+              type: decimal
+              description: "(vwretd) Value-weighted return including dividends"
+            vwretx:
+              type: decimal
+              description: "(vwretx) Value-weighted return excluding dividends"
+            vwtotval:
+              type: decimal
+              description: "(vwtotval) Value-weighted total market value"
+            vwusdval:
+              type: decimal
+              description: "(vwusdval) Value-weighted market value of securities used"
+            vwtotcnt:
+              type: int
+              description: "(vwtotcnt) Index Total Count on DlyCalDt"
+            vwusdcnt:
+              type: int
+              description: "(vwusdcnt) Used Count on the DlyCalDt"
+            ewretd:
+              type: decimal
+              description: "(ewretd) Equal-weighted return including dividends"
+            ewretx:
+              type: decimal
+              description: "(ewretx) Equal-weighted return excluding dividends"
+            ewtotval:
+              type: decimal
+              description: "(ewtotval) Equal-weighted total market value"
+            ewusdval:
+              type: decimal
+              description: "(ewusdval) Equal-weighted market value of securities used"
+            ewtotcnt:
+              type: int
+              description: "(ewtotcnt) Index Total Count on DlyCalDt"
+            ewusdcnt:
+              type: int
+              description: "(ewusdcnt) Used Count on the DlyCalDt"
+            sprtrn:
+              type: decimal
+              description: "(sprtrn) Return on the S&P 500 Index"
+            spindx:
+              type: decimal
+              description: "(spindx) Level of the S&P 500 Index"
+          pipeline:
+            timestamp: dlycaldt
+
+      names:
+        title: "CRSP Stock Historical Names and Identifiers"   
+        library: "crsp"
+        file: "names"
+        wrds_metadata:
+          product: "crsp_a_stock"
+          library: "crspa"
+          file: "wrds_names_query"
+          date range:
+            dvar: null
+            dvar_descr: null
+            begdt: null
+            enddt: null
+          last updated on: 2025-02-08
+          update frequency: "Annually"
+        storage:
+          path: "./data/raw/crsp/names/data.csv.gz"
+          format: csv.gz
+        keys:
+          - permno
+        index:
+          timestamp_column: [secinfostartdt, secinfoenddt, securitybegdt, securityenddt]
+          frequency: null
+        schema:
+          variables:
+            permno:
+              type: int
+              description: "(permno) PERMNO"
+            hdrprimaryexch:
+              type: string
+              description: "(hdrprimaryexch) Header Primary Exchange"
+            nasdissuno:
+              type: int
+              description: "(nasdissuno) Nasdaq Issue Number"
+            hdrsiccd:
+              type: int
+              description: "(hdrsiccd) Header SIC Code"
+            permco:
+              type: int
+              description: "(permco) PERMCO"
+            secinfostartdt:
+              type: date
+              description: "(secinfostartdt) Security Information Start Date"
+            secinfoenddt:
+              type: date
+              description: "(secinfoenddt) Security Information End Date"
+            securitybegdt:
+              type: date
+              description: "(securitybegdt) Begin Date of Stock Data"
+            securityenddt:
+              type: date
+              description: "(securityenddt) End Date of Stock Data"
+            cusip:
+              type: string
+              description: "(cusip) CUSIP"
+            ticker:
+              type: string
+              description: "(ticker) Ticker"
+            issuernm:
+              type: string
+              description: "(issuernm) Issuer Name"
+            shareclass:
+              type: string
+              description: "(shareclass) Share Class"
+            usincflg:
+              type: string
+              description: "(usincflg) US Incorporation Flag"
+            issuertype:
+              type: string
+              description: "(issuertype) Issuer Type"
+            securitytype:
+              type: string
+              description: "(securitytype) Security Type"
+            securitysubtype:
+              type: string
+              description: "(securitysubtype) Security Sub-Type"
+            sharetype:
+              type: string
+              description: "(sharetype) Share Type"
+            securityactiveflg:
+              type: string
+              description: "(securityactiveflg) Security Active Flag"
+            siccd:
+              type: int
+              description: "(siccd) Sic Code"
+            primaryexch:
+              type: string
+              description: "(primaryexch) Primary Exchange"
+            tradingsymbol:
+              type: string
+              description: "(tradingsymbol) Trading Symbol"
+            naics:
+              type: string
+              description: "(naics) NAICS Code"
+            tradingstatusflg:
+              type: string
+              description: "(tradingstatusflg) Trading Status Flag"
+          pipeline:
+            id: permno
+
+      infohdr:
+        title: "CRSP Stock Header Information"
+        library: "crsp"
+        file: "infohdr"
+        wrds_metadata:
+          product: "crsp_a_stock"
+          library: "crspa"
+          file: "StkSecurityInfoHdr"
+          date range:
+            dvar: null
+            dvar_descr: null
+            begdt: null
+            enddt: null
+          last updated on: 2025-02-08
+          update frequency: "Annually"
+        storage:
+          path: "./data/raw/crsp/infohdr/data.csv.gz"
+          format: csv.gz
+        keys:
+          - permno
+        index:
+          timestamp_column: [secinfostartdt, secinfoenddt, securitybegdt, securityenddt]
+          frequency: null
+        schema:
+          variables:
+            permno:
+              type: int
+              description: "(permno) PERMNO"
+            secinfostartdt:
+              type: date
+              description: "(secinfostartdt) Security Information Start Date"
+            secinfoenddt:
+              type: date
+              description: "(secinfoenddt) Security Information End Date"
+            securitybegdt:
+              type: date
+              description: "(securitybegdt) Begin Date of Stock Data"
+            securityenddt:
+              type: date
+              description: "(securityenddt) End Date of Stock Data"
+            securityhdrflg:
+              type: string
+              description: "(securityhdrflg) Security Header Flag"
+            hdrcusip:
+              type: string
+              description: "(hdrcusip) Header CUSIP - 8 Characters"
+            hdrcusip9:
+              type: string
+              description: "(hdrcusip9) Header CUSIP - 9 Characters"
+            cusip:
+              type: string
+              description: "(cusip) CUSIP"
+            cusip9:
+              type: string
+              description: "(cusip9) CUSIP9"
+            primaryexch:
+              type: string
+              description: "(primaryexch) Primary Exchange"
+            conditionaltype:
+              type: string
+              description: "(conditionaltype) Conditional Type"
+            exchangetier:
+              type: string
+              description: "(exchangetier) Exchange Tier"
+            tradingstatusflg:
+              type: string
+              description: "(tradingstatusflg) Trading Status Flag"
+            securitynm:
+              type: string
+              description: "(securitynm) Security Name"
+            shareclass:
+              type: string
+              description: "(shareclass) Share Class"
+            usincflg:
+              type: string
+              description: "(usincflg) US Incorporation Flag"
+            issuertype:
+              type: string
+              description: "(issuertype) Issuer Type"
+            securitytype:
+              type: string
+              description: "(securitytype) Security Type"
+            securitysubtype:
+              type: string
+              description: "(securitysubtype) Security Sub-Type"
+            sharetype:
+              type: string
+              description: "(sharetype) Share Type"
+            securityactiveflg:
+              type: string
+              description: "(securityactiveflg) Security Active Flag"
+            delactiontype:
+              type: string
+              description: "(delactiontype) Delisting Corporate Action Type"
+            delstatustype:
+              type: string
+              description: "(delstatustype) Delisting Completion Status Type"
+            delreasontype:
+              type: string
+              description: "(delreasontype) Delisting Reason Type"
+            delpaymenttype:
+              type: string
+              description: "(delpaymenttype) Delisting Payment Summary Type"
+            ticker:
+              type: string
+              description: "(ticker) Ticker"
+            tradingsymbol:
+              type: string
+              description: "(tradingsymbol) Trading Symbol"
+            permco:
+              type: int
+              description: "(permco) PERMCO"
+            siccd:
+              type: int
+              description: "(siccd) Sic Code"
+            naics:
+              type: string
+              description: "(naics) NAICS Code"
+            icbindustry:
+              type: string
+              description: "(icbindustry) ICB Industry Code"
+            uesindustry:
+              type: string
+              description: "uesindustry"
+            nasdcompno:
+              type: int
+              description: "(nasdcompno) Nasdaq Company Number"
+            nasdissuno:
+              type: int
+              description: "(nasdissuno) Nasdaq Issue Number"
+            issuernm:
+              type: string
+              description: "(issuernm) Issuer Name"
+          pipeline:
+            id: permno
+
+    crsp_a_treasuries:
+      dtfz:
+        title: "CRSP Treasury Daily Time Series File"
+        library: "crsp"
+        file: "dtfz"
+        wrds_metadata:
+          product: "crsp_a_treasuries"
+          library: "crspa"
+          file: "tfz_dly"
+          date range:
+            dvar: "tdatdt"
+            dvar_descr: "Date Dated by Treasury"
+            begdt: 1916-01-01
+            enddt: 2025-01-07
+          last updated on: 2025-02-08
+          update frequency: "Annually"
+        storage:
+          path: "./data/raw/crsp/dtfz/data.csv.gz"
+          format: csv.gz
+        keys:
+          - kytreasno
+          - tdatdt
+        index:
+          timestamp_column: tdatdt
+          frequency: "D"
+        schema:
+          variables:
+            kytreasno:
+              type: decimal
+              description: "(kytreasno) Treasury Record Identifier"
+              category: idinfo
+              category_name: "Issue Description Items"
+            crspid:
+              type: string
+              description: "(crspid) CRSP-Assigned Unique ID"
+              category: idinfo
+              category_name: "Issue Description Items"
+            ifcpdtf:
+              type: decimal
+              description: "(ifcpdtf) First Coupon Payment Date Flag"
+              category: idinfo
+              category_name: "Issue Description Items"
+            iflwr:
+              type: decimal
+              description: "(iflwr) Payment of Estate Tax Code"
+              category: idinfo
+              category_name: "Issue Description Items"
+            itax:
+              type: decimal
+              description: "(itax) Taxability of Interest"
+              category: idinfo
+              category_name: "Issue Description Items"
+            itype:
+              type: decimal
+              description: "(itype) Type of Issue"
+              category: idinfo
+              category_name: "Issue Description Items"
+            iuniq:
+              type: decimal
+              description: "(iuniq) Uniqueness Number"
+              category: idinfo
+              category_name: "Issue Description Items"
+            iwhy:
+              type: decimal
+              description: "(iwhy) Reason for End of Data on File"
+              category: idinfo
+              category_name: "Issue Description Items"
+            iymcn:
+              type: decimal
+              description: "(iymcn) Month and year of the first call notice"
+              category: idinfo
+              category_name: "Issue Description Items"
+            tbankdt:
+              type: date
+              description: "(tbankdt) Bank Eligibility Date at Time of Issue"
+              category: idinfo
+              category_name: "Issue Description Items"
+            tcouprt:
+              type: decimal
+              description: "(tcouprt) Coupon Rate (percent per annum)"
+              category: idinfo
+              category_name: "Issue Description Items"
+            tcusip:
+              type: string
+              description: "(tcusip) Treasury CUSIP"
+              category: idinfo
+              category_name: "Issue Description Items"
+            tdatdt:
+              type: date
+              description: "(tdatdt) Date Dated by Treasury"
+              category: idinfo
+              category_name: "Issue Description Items"
+            tfcaldt:
+              type: date
+              description: "(tfcaldt) First Eligible Call Date at Time of Issue"
+              category: idinfo
+              category_name: "Issue Description Items"
+            tfcpdt:
+              type: date
+              description: "(tfcpdt) First Coupon Payment Date"
+              category: idinfo
+              category_name: "Issue Description Items"
+            tfrgntgt:
+              type: string
+              description: "(tfrgntgt) Future Use - Foreign Targeted Flag"
+              category: idinfo
+              category_name: "Issue Description Items"
+            tmatdt:
+              type: date
+              description: "(tmatdt) Maturity Date at Time of Issue"
+              category: idinfo
+              category_name: "Issue Description Items"
+            tnippy:
+              type: decimal
+              description: "(nippy) Number of Interest Payments Per Year"
+              category: idinfo
+              category_name: "Issue Description Items"
+            tnotice:
+              type: decimal
+              description: "(tnotice) Notice Required on Callable Issues"
+              category: idinfo
+              category_name: "Issue Description Items"
+            tstripelig:
+              type: string
+              description: "(tstripelig) Future Use - Strip Eligible Flag"
+              category: idinfo
+              category_name: "Issue Description Items"
+            tvalfc:
+              type: decimal
+              description: "(tvalfc) Amount of First Coupon Per $100 Face Value"
+              category: idinfo
+              category_name: "Issue Description Items"
+            tdaccint:
+              type: decimal
+              description: "(tdaccint) Total Accrued Interest at End of Day"
+              category: tsinfo
+              category_name: "Daily Time Series Items"
+            tdask:
+              type: decimal
+              description: "(tdask) Daily Bid"
+              category: tsinfo
+              category_name: "Daily Time Series Items"
+            tdbid:
+              type: decimal
+              description: "(tdbid) Daily Ask"
+              category: tsinfo
+              category_name: "Daily Time Series Items"
+            tdduratn:
+              type: decimal
+              description: "(tdduratn) Duration (Macaulay's Duration)"
+              category: tsinfo
+              category_name: "Daily Time Series Items"
+            tdnomprc:
+              type: decimal
+              description: "(tdnomprc) Daily Nominal Price"
+              category: tsinfo
+              category_name: "Daily Time Series Items"
+            tdnomprc_flg:
+              type: string
+              description: "(tdnomprc_flg) Daily Nominal Price Flag"
+              category: tsinfo
+              category_name: "Daily Time Series Items"
+            tdpdint:
+              type: decimal
+              description: "(tdpdint) Interest Paid"
+              category: tsinfo
+              category_name: "Daily Time Series Items"
+            tdpubout:
+              type: decimal
+              description: "(tdpubout) Publicly Held Face Value Outstanding"
+              category: tsinfo
+              category_name: "Daily Time Series Items"
+            tdretnua:
+              type: decimal
+              description: "(tdretnua) Unadjusted Return"
+              category: tsinfo
+              category_name: "Daily Time Series Items"
+            tdsourcr:
+              type: string
+              description: "(tdsourcr) Primary Data Source"
+              category: tsinfo
+              category_name: "Daily Time Series Items"
+            tdtotout:
+              type: decimal
+              description: "(tdtotout) Face Value Outstanding"
+              category: tsinfo
+              category_name: "Daily Time Series Items"
+            tdyld:
+              type: decimal
+              description: "(tdyld) Promised Daily Yield"
+              category: tsinfo
+              category_name: "Daily Time Series Items"
+          pipeline:
+              timestamp: tdatdt
+              id: kytreasno
+              price: tdnomprc
+              returns: tdretnua
+
+  wrds:
+    wrdsapps:
+      finratiofirm:
+        title: "Financial Ratios Firm Level by WRDS (Beta)"
+        library: "wrds"
+        file: "finratiofirm"
+        wrds_metadata:
+          product: "wrdsapps_finratios"
+          library: "wrdsapps"
+          file: "finratiofirm"
+          date range:
+            dvar: "public_date"
+            dvar_descr:
+            begdt: 1970-01-31
+            enddt: 2024-12-31
+          last updated on: 2025-06-23
+          update frequency: "Annually"
+        storage:
+          path: "./data/raw/wrds/finratiofirm/data.csv.gz"
+          format: csv.gz
+        keys:
+          - gvkey
+          - public_date
+        index:
+          timestamp_column: public_date
+          frequency: "M"
+        schema:
+          variables:
+            permno:
+              type: int
+              description: "(permno) PERMNO"
+              category: idinfo
+              category_name: "Issue Description Items"
+            gvkey:
+              type: string
+              description: "(gvkey) Global Company Key"
+              category: idinfo
+              category_name: "Issue Description Items"
+            cusip:
+              type: string
+              description: "(cusip) CUSIP"
+              category: idinfo
+              category_name: "Issue Description Items"
+            ticker:
+              type: string
+              description: "(ticker) Ticker Symbol"
+              category: idinfo
+              category_name: "Issue Description Items"
+
+            adate:
+              type: date
+              description: "(adate) Announcement Date"
+              category: tsinfo
+              category_name: "Time Series Information"
+            qdate:
+              type: date
+              description: "(qdate) Quarter End Date"
+              category: tsinfo
+              category_name: "Time Series Information"
+            public_date:
+              type: date
+              description: "(public_date) Fiscal Year"
+              category: tsinfo
+              category_name: "Time Series Information"
+
+            dpr:
+              type: decimal
+              description: "(dpr) Dividend Payout Ratio"
+              category: valueratio
+              category_name: "Valuation Ratios"
+            peg_trailing:
+              type: decimal
+              description: "(peg_trailing) Trailing P/E to Growth (PEG) ratio"
+              category: valueratio
+              category_name: "Valuation Ratios"
+            bm:
+              type: decimal
+              description: "(bm) Book/Market"
+              category: valueratio
+              category_name: "Valuation Ratios"
+            capei:
+              type: decimal
+              description: "(capei) Shillers Cyclically Adjusted P/E Ratio"
+              category: valueratio
+              category_name: "Valuation Ratios"
+            divyield:
+              type: decimal
+              description: "(divyield) Dividend Yield"
+              category: valueratio
+              category_name: "Valuation Ratios"
+            evm:
+              type: decimal
+              description: "(evm) Enterprise Value Multiple"
+              category: valueratio
+              category_name: "Valuation Ratios"
+            pcf:
+              type: decimal
+              description: "(pcf) Price/Cash flow"
+              category: valueratio
+              category_name: "Valuation Ratios"
+            pe_exi:
+              type: decimal
+              description: "(pe_exi) P/E (Diluted, Excl. EI)"
+              category: valueratio
+              category_name: "Valuation Ratios"
+            pe_inc:
+              type: decimal
+              description: "(pe_inc) P/E (Diluted, Incl. EI)"
+              category: valueratio
+              category_name: "Valuation Ratios"
+            pe_op_basic:
+              type: decimal
+              description: "(pe_op_basic) Price/Operating Earnings (Basic, Excl. EI)"
+              category: valueratio
+              category_name: "Valuation Ratios"
+            pe_op_dil:
+              type: decimal
+              description: "(pe_op_dil) Price/Operating Earnings (Diluted, Excl. EI)"
+              category: valueratio
+              category_name: "Valuation Ratios"
+            ps:
+              type: decimal
+              description: "(ps) Price/Sales"
+              category: valueratio
+              category_name: "Valuation Ratios"
+            ptb:
+              type: decimal
+              description: "(ptb) Price/Book"
+              category: valueratio
+              category_name: "Valuation Ratios"
+
+            efftax:
+              type: decimal
+              description: "(efftax) Effective Tax Rate"
+              category: profitratio
+              category_name: "Profitability Ratios"
+            gprof:
+              type: decimal
+              description: "(gprof) Gross Profit/Total Assets"
+              category: profitratio
+              category_name: "Profitability Ratios"
+            aftret_eq:
+              type: decimal
+              description: "(aftret_eq) After-tax Return on Average Common Equity"
+              category: profitratio
+              category_name: "Profitability Ratios"
+            aftret_equity:
+              type: decimal
+              description: "(aftret_equity) After-tax Return on Total Stockholders Equity"
+              category: profitratio
+              category_name: "Profitability Ratios"
+            aftret_invcapx:
+              type: decimal
+              description: "(aftret_invcapx) After-tax Return on Invested Capital"
+              category: profitratio
+              category_name: "Profitability Ratios"
+            gpm:
+              type: decimal
+              description: "(gpm) Gross Profit Margin"
+              category: profitratio
+              category_name: "Profitability Ratios"
+            npm:
+              type: decimal
+              description: "(npm) Net Profit Margin"
+              category: profitratio
+              category_name: "Profitability Ratios"
+            opmad:
+              type: decimal
+              description: "(opmad) Operating Profit Margin After Depreciation"
+              category: profitratio
+              category_name: "Profitability Ratios"
+            opmbd:
+              type: decimal
+              description: "(opmbd) Operating Profit Margin Before Depreciation"
+              category: profitratio
+              category_name: "Profitability Ratios"
+            pretret_earnat:
+              type: decimal
+              description: "(pretret_earnat) Pre-tax Return on Total Earning Assets"
+              category: profitratio
+              category_name: "Profitability Ratios"
+            pretret_noa:
+              type: decimal
+              description: "(pretret_noa) Pre-tax return on Net Operating Assets"
+              category: profitratio
+              category_name: "Profitability Ratios"
+            ptpm:
+              type: decimal
+              description: "(ptpm) Pre-tax Profit Margin"
+              category: profitratio
+              category_name: "Profitability Ratios"
+            roa:
+              type: decimal
+              description: "(roa) Return on Assets"
+              category: profitratio
+              category_name: "Profitability Ratios"
+            roce:
+              type: decimal
+              description: "(roce) Return on Capital Employed"
+              category: profitratio
+              category_name: "Profitability Ratios"
+            roe:
+              type: decimal
+              description: "(roe) Return on Equity"
+              category: profitratio
+              category_name: "Profitability Ratios"
+
+            capital_ratio:
+              type: decimal
+              description: "(capital_ratio) Capitalization Ratio"
+              category: capitalratio
+              category_name: "Capitalization Ratios"
+            equity_invcap:
+              type: decimal
+              description: "(equity_invcap) Common Equity/Invested Capital"
+              category: capitalratio
+              category_name: "Capitalization Ratios"
+            debt_invcap:
+              type: decimal
+              description: "(debt_invcap) Long-term Debt/Invested Capital"
+              category: capitalratio
+              category_name: "Capitalization Ratios"
+            totdebt_invcap:
+              type: decimal
+              description: "(totdebt_invcap) Total Debt/Invested Capital"
+              category: capitalratio
+              category_name: "Capitalization Ratios"
+
+            invt_act:
+              type: decimal
+              description: "(invt_act) Inventory/Current Assets"
+              category: finsound
+              category_name: "Financial Soundness"
+            rect_act:
+              type: decimal
+              description: "(rect_act) Receivables/Current Assets"
+              category: finsound
+              category_name: "Financial Soundness"
+            fcf_ocf:
+              type: decimal
+              description: "(fcf_ocf) Free Cash Flow/Operating Cash Flow"
+              category: finsound
+              category_name: "Financial Soundness"
+            ocf_lct:
+              type: decimal
+              description: "(ocf_lct) Operating CF/Current Liabilities"
+              category: finsound
+              category_name: "Financial Soundness"
+            cash_debt:
+              type: decimal
+              description: "(cash_debt) Cash Flow/Total Debt"
+              category: finsound
+              category_name: "Financial Soundness"
+            cash_lt:
+              type: decimal
+              description: "(cash_lt) Cash Balance/Total Liabilities"
+              category: finsound
+              category_name: "Financial Soundness"
+            cfm:
+              type: decimal
+              description: "(cfm) Cash Flow Margin"
+              category: finsound
+              category_name: "Financial Soundness"
+            short_debt:
+              type: decimal
+              description: "(short_debt) Short-Term Debt/Total Debt"
+              category: finsound
+              category_name: "Financial Soundness"
+            profit_lct:
+              type: decimal
+              description: "(profit_lct) Profit Before Depreciation/Current Liabilities"
+              category: finsound
+              category_name: "Financial Soundness"
+            curr_debt:
+              type: decimal
+              description: "(curr_debt) Current Liabilities/Total Liabilities"
+              category: finsound
+              category_name: "Financial Soundness"
+            debt_ebitda:
+              type: decimal
+              description: "(debt_ebitda) Total Debt/EBITDA"
+              category: finsound
+              category_name: "Financial Soundness"
+            dltt_be:
+              type: decimal
+              description: "(dltt_be) Long-term Debt/Book Equity"
+              category: finsound
+              category_name: "Financial Soundness"
+            int_debt:
+              type: decimal
+              description: "(int_debt) Interest/Average Long-term Debt"
+              category: finsound
+              category_name: "Financial Soundness"
+            int_totdebt:
+              type: decimal
+              description: "(int_totdebt) Interest/Average Total Debt"
+              category: finsound
+              category_name: "Financial Soundness"
+            lt_debt:
+              type: decimal
+              description: "(lt_debt) Long-term Debt/Total Liabilities"
+              category: finsound
+              category_name: "Financial Soundness"
+            lt_ppent:
+              type: decimal
+              description: "(lt_ppent) Total Liabilities/Total Tangible Assets"
+              category: finsound
+              category_name: "Financial Soundness"
+
+            de_ratio:
+              type: decimal
+              description: "(de_ratio) Total Debt/Equity"
+              category: solventratios
+              category_name: "Solvency Ratios"
+            debt_assets:
+              type: decimal
+              description: "(debt_assets) Total Liabilities/Total Assets"
+              category: solventratios
+              category_name: "Solvency Ratios"
+            debt_at:
+              type: decimal
+              description: "(debt_at) Total Long Term Debt Plus Debt in Current Liabilities/Total Assets"
+              category: solventratios
+              category_name: "Solvency Ratios"
+            debt_capital:
+              type: decimal
+              description: "(debt_capital) Total Debt/Capital"
+              category: solventratios
+              category_name: "Solvency Ratios"
+            intcov:
+              type: decimal
+              description: "(intcov) After-tax Interest Coverage"
+              category: solventratios
+              category_name: "Solvency Ratios"
+            intcov_ratio:
+              type: decimal
+              description: "(intcov_ratio) Interest Coverage Ratio"
+              category: solventratios
+              category_name: "Solvency Ratios"
+
+            cash_conversion:
+              type: decimal
+              description: "(cash_conversion) Cash Conversion Cycle (Days)"
+              category: liquidratios
+              category_name: "Liquidity Ratios"
+            cash_ratio:
+              type: decimal
+              description: "(cash_ratio) Cash Ratio"
+              category: liquidratios
+              category_name: "Liquidity Ratios"
+            curr_ratio:
+              type: decimal
+              description: "(curr_ratio) Current Ratio"
+              category: liquidratios
+              category_name: "Liquidity Ratios"
+            quick_ratio:
+              type: decimal
+              description: "(quick_ratio) Quick Ratio (Acid Test)"
+              category: liquidratios
+              category_name: "Liquidity Ratios"
+
+            at_turn:
+              type: decimal
+              description: "(at_turn) Asset Turnover"
+              category: effratio
+              category_name: "Efficiency Ratios"
+            inv_turn:
+              type: decimal
+              description: "(inv_turn) Inventory Turnover"
+              category: effratio
+              category_name: "Efficiency Ratios"
+            pay_turn:
+              type: decimal
+              description: "(pay_turn) Payables Turnover"
+              category: effratio
+              category_name: "Efficiency Ratios"
+            rect_turn:
+              type: decimal
+              description: "(rect_turn) Receivables Turnover"
+              category: effratio
+              category_name: "Efficiency Ratios"
+            sale_equity:
+              type: decimal
+              description: "(sale_equity) Sales/Stockholders Equity"
+              category: effratio
+              category_name: "Efficiency Ratios"
+            sale_invcap:
+              type: decimal
+              description: "(sale_invcap) Sales/Invested Capital"
+              category: effratio
+              category_name: "Efficiency Ratios"
+            sale_nwc:
+              type: decimal
+              description: "(sale_nwc) Sales/Working Capital"
+              category: effratio
+              category_name: "Efficiency Ratios"
+
+            accrual:
+              type: decimal
+              description: "(accrual) Accruals/Average Assets"
+              category: other
+              category_name: "Other Ratios"
+            rd_sale:
+              type: decimal
+              description: "(rd_sale) Research and Development/Sales"
+              category: other
+              category_name: "Other Ratios"
+            adv_sale:
+              type: decimal
+              description: "(adv_sale) Avertising Expenses/Sales"
+              category: other
+              category_name: "Other Ratios"
+            staff_sale:
+              type: decimal
+              description: "(staff_sale) Labor Expenses/Sales"
+              category: other
+              category_name: "Other Ratios"
+          pipeline:
+            id: gvkey
+            timestamp: public_date
+
+      finratioind:
+        gics:
+          title: "Financial Ratios Industry Level by WRDS (Beta) [GIC 10 Sectors]"
+          library: "wrds"
+          file: "finratioind/gics"
+          wrds_metadata:
+            product: "wrdsapps_finratios"
+            library: "wrdsapps"
+            file: "finratioind"
+            date range:
+              dvar: "public_date"
+              dvar_descr:
+              begdt: 1970-01-31
+              enddt: 2024-12-31
+            last updated on: 2025-06-23
+            update frequency: "Annually"
+          storage:
+            path: "./data/raw/wrds/finratioind/gics/data.csv.gz"
+            format: csv.gz
+          keys:
+            - gvkey
+            - public_date
+          index:
+            timestamp_column: public_date
+            frequency: "M"
+          schema:
+            variables:
+              permno:
+                type: int
+                description: "(permno) PERMNO"
+                category: idinfo
+                category_name: "Issue Description Items"
+              gvkey:
+                type: string
+                description: "(gvkey) Global Company Key"
+                category: idinfo
+                category_name: "Issue Description Items"
+              cusip:
+                type: string
+                description: "(cusip) CUSIP"
+                category: idinfo
+                category_name: "Issue Description Items"
+              ticker:
+                type: string
+                description: "(ticker) Ticker Symbol"
+                category: idinfo
+                category_name: "Issue Description Items"
+              gsector:
+                type: int
+                description: "(gsector) GIC Sector"
+                category: idinfo
+                category_name: "Issue Description Items"
+              gicdesc:
+                type: string
+                description: "(gicdesc) GIC Sector Description"
+                category: idinfo
+                category_name: "Issue Description Items"
+              indret_ew:
+                type: decimal
+                description: "(indret_ew) Industry Return - Equal Weighted"
+                category: idinfo
+                category_name: "Issue Description Items"
+              indret_vw:
+                type: decimal
+                description: "(indret_vw) Industry Return - Value Weighted"
+                category: idinfo
+                category_name: "Issue Description Items"
+              nfirm:
+                type: int
+                description: "(nfirm) The number of companies that belongs to the industry classification"
+                category: idinfo
+                category_name: "Issue Description Items"
+
+              adate:
+                type: date
+                description: "(adate) Announcement Date"
+                category: tsinfo
+                category_name: "Time Series Information"
+              qdate:
+                type: date
+                description: "(qdate) Quarter End Date"
+                category: tsinfo
+                category_name: "Time Series Information"
+              public_date:
+                type: date
+                description: "(public_date) Fiscal Year"
+                category: tsinfo
+                category_name: "Time Series Information"
+
+              dpr:
+                type: decimal
+                description: "(dpr) Dividend Payout Ratio"
+                category: valueratio
+                category_name: "Valuation Ratios"
+              peg_trailing:
+                type: decimal
+                description: "(peg_trailing) Trailing P/E to Growth (PEG) ratio"
+                category: valueratio
+                category_name: "Valuation Ratios"
+              bm:
+                type: decimal
+                description: "(bm) Book/Market"
+                category: valueratio
+                category_name: "Valuation Ratios"
+              capei:
+                type: decimal
+                description: "(capei) Shillers Cyclically Adjusted P/E Ratio"
+                category: valueratio
+                category_name: "Valuation Ratios"
+              divyield:
+                type: decimal
+                description: "(divyield) Dividend Yield"
+                category: valueratio
+                category_name: "Valuation Ratios"
+              evm:
+                type: decimal
+                description: "(evm) Enterprise Value Multiple"
+                category: valueratio
+                category_name: "Valuation Ratios"
+              pcf:
+                type: decimal
+                description: "(pcf) Price/Cash flow"
+                category: valueratio
+                category_name: "Valuation Ratios"
+              pe_exi:
+                type: decimal
+                description: "(pe_exi) P/E (Diluted, Excl. EI)"
+                category: valueratio
+                category_name: "Valuation Ratios"
+              pe_inc:
+                type: decimal
+                description: "(pe_inc) P/E (Diluted, Incl. EI)"
+                category: valueratio
+                category_name: "Valuation Ratios"
+              pe_op_basic:
+                type: decimal
+                description: "(pe_op_basic) Price/Operating Earnings (Basic, Excl. EI)"
+                category: valueratio
+                category_name: "Valuation Ratios"
+              pe_op_dil:
+                type: decimal
+                description: "(pe_op_dil) Price/Operating Earnings (Diluted, Excl. EI)"
+                category: valueratio
+                category_name: "Valuation Ratios"
+              ps:
+                type: decimal
+                description: "(ps) Price/Sales"
+                category: valueratio
+                category_name: "Valuation Ratios"
+              ptb:
+                type: decimal
+                description: "(ptb) Price/Book"
+                category: valueratio
+                category_name: "Valuation Ratios"
+
+              efftax:
+                type: decimal
+                description: "(efftax) Effective Tax Rate"
+                category: profitratio
+                category_name: "Profitability Ratios"
+              gprof:
+                type: decimal
+                description: "(gprof) Gross Profit/Total Assets"
+                category: profitratio
+                category_name: "Profitability Ratios"
+              aftret_eq:
+                type: decimal
+                description: "(aftret_eq) After-tax Return on Average Common Equity"
+                category: profitratio
+                category_name: "Profitability Ratios"
+              aftret_equity:
+                type: decimal
+                description: "(aftret_equity) After-tax Return on Total Stockholders Equity"
+                category: profitratio
+                category_name: "Profitability Ratios"
+              aftret_invcapx:
+                type: decimal
+                description: "(aftret_invcapx) After-tax Return on Invested Capital"
+                category: profitratio
+                category_name: "Profitability Ratios"
+              gpm:
+                type: decimal
+                description: "(gpm) Gross Profit Margin"
+                category: profitratio
+                category_name: "Profitability Ratios"
+              npm:
+                type: decimal
+                description: "(npm) Net Profit Margin"
+                category: profitratio
+                category_name: "Profitability Ratios"
+              opmad:
+                type: decimal
+                description: "(opmad) Operating Profit Margin After Depreciation"
+                category: profitratio
+                category_name: "Profitability Ratios"
+              opmbd:
+                type: decimal
+                description: "(opmbd) Operating Profit Margin Before Depreciation"
+                category: profitratio
+                category_name: "Profitability Ratios"
+              pretret_earnat:
+                type: decimal
+                description: "(pretret_earnat) Pre-tax Return on Total Earning Assets"
+                category: profitratio
+                category_name: "Profitability Ratios"
+              pretret_noa:
+                type: decimal
+                description: "(pretret_noa) Pre-tax return on Net Operating Assets"
+                category: profitratio
+                category_name: "Profitability Ratios"
+              ptpm:
+                type: decimal
+                description: "(ptpm) Pre-tax Profit Margin"
+                category: profitratio
+                category_name: "Profitability Ratios"
+              roa:
+                type: decimal
+                description: "(roa) Return on Assets"
+                category: profitratio
+                category_name: "Profitability Ratios"
+              roce:
+                type: decimal
+                description: "(roce) Return on Capital Employed"
+                category: profitratio
+                category_name: "Profitability Ratios"
+              roe:
+                type: decimal
+                description: "(roe) Return on Equity"
+                category: profitratio
+                category_name: "Profitability Ratios"
+
+              capital_ratio:
+                type: decimal
+                description: "(capital_ratio) Capitalization Ratio"
+                category: capitalratio
+                category_name: "Capitalization Ratios"
+              equity_invcap:
+                type: decimal
+                description: "(equity_invcap) Common Equity/Invested Capital"
+                category: capitalratio
+                category_name: "Capitalization Ratios"
+              debt_invcap:
+                type: decimal
+                description: "(debt_invcap) Long-term Debt/Invested Capital"
+                category: capitalratio
+                category_name: "Capitalization Ratios"
+              totdebt_invcap:
+                type: decimal
+                description: "(totdebt_invcap) Total Debt/Invested Capital"
+                category: capitalratio
+                category_name: "Capitalization Ratios"
+
+              invt_act:
+                type: decimal
+                description: "(invt_act) Inventory/Current Assets"
+                category: finsound
+                category_name: "Financial Soundness"
+              rect_act:
+                type: decimal
+                description: "(rect_act) Receivables/Current Assets"
+                category: finsound
+                category_name: "Financial Soundness"
+              fcf_ocf:
+                type: decimal
+                description: "(fcf_ocf) Free Cash Flow/Operating Cash Flow"
+                category: finsound
+                category_name: "Financial Soundness"
+              ocf_lct:
+                type: decimal
+                description: "(ocf_lct) Operating CF/Current Liabilities"
+                category: finsound
+                category_name: "Financial Soundness"
+              cash_debt:
+                type: decimal
+                description: "(cash_debt) Cash Flow/Total Debt"
+                category: finsound
+                category_name: "Financial Soundness"
+              cash_lt:
+                type: decimal
+                description: "(cash_lt) Cash Balance/Total Liabilities"
+                category: finsound
+                category_name: "Financial Soundness"
+              cfm:
+                type: decimal
+                description: "(cfm) Cash Flow Margin"
+                category: finsound
+                category_name: "Financial Soundness"
+              short_debt:
+                type: decimal
+                description: "(short_debt) Short-Term Debt/Total Debt"
+                category: finsound
+                category_name: "Financial Soundness"
+              profit_lct:
+                type: decimal
+                description: "(profit_lct) Profit Before Depreciation/Current Liabilities"
+                category: finsound
+                category_name: "Financial Soundness"
+              curr_debt:
+                type: decimal
+                description: "(curr_debt) Current Liabilities/Total Liabilities"
+                category: finsound
+                category_name: "Financial Soundness"
+              debt_ebitda:
+                type: decimal
+                description: "(debt_ebitda) Total Debt/EBITDA"
+                category: finsound
+                category_name: "Financial Soundness"
+              dltt_be:
+                type: decimal
+                description: "(dltt_be) Long-term Debt/Book Equity"
+                category: finsound
+                category_name: "Financial Soundness"
+              int_debt:
+                type: decimal
+                description: "(int_debt) Interest/Average Long-term Debt"
+                category: finsound
+                category_name: "Financial Soundness"
+              int_totdebt:
+                type: decimal
+                description: "(int_totdebt) Interest/Average Total Debt"
+                category: finsound
+                category_name: "Financial Soundness"
+              lt_debt:
+                type: decimal
+                description: "(lt_debt) Long-term Debt/Total Liabilities"
+                category: finsound
+                category_name: "Financial Soundness"
+              lt_ppent:
+                type: decimal
+                description: "(lt_ppent) Total Liabilities/Total Tangible Assets"
+                category: finsound
+                category_name: "Financial Soundness"
+
+              de_ratio:
+                type: decimal
+                description: "(de_ratio) Total Debt/Equity"
+                category: solventratios
+                category_name: "Solvency Ratios"
+              debt_assets:
+                type: decimal
+                description: "(debt_assets) Total Liabilities/Total Assets"
+                category: solventratios
+                category_name: "Solvency Ratios"
+              debt_at:
+                type: decimal
+                description: "(debt_at) Total Long Term Debt Plus Debt in Current Liabilities/Total Assets"
+                category: solventratios
+                category_name: "Solvency Ratios"
+              debt_capital:
+                type: decimal
+                description: "(debt_capital) Total Debt/Capital"
+                category: solventratios
+                category_name: "Solvency Ratios"
+              intcov:
+                type: decimal
+                description: "(intcov) After-tax Interest Coverage"
+                category: solventratios
+                category_name: "Solvency Ratios"
+              intcov_ratio:
+                type: decimal
+                description: "(intcov_ratio) Interest Coverage Ratio"
+                category: solventratios
+                category_name: "Solvency Ratios"
+
+              cash_conversion:
+                type: decimal
+                description: "(cash_conversion) Cash Conversion Cycle (Days)"
+                category: liquidratios
+                category_name: "Liquidity Ratios"
+              cash_ratio:
+                type: decimal
+                description: "(cash_ratio) Cash Ratio"
+                category: liquidratios
+                category_name: "Liquidity Ratios"
+              curr_ratio:
+                type: decimal
+                description: "(curr_ratio) Current Ratio"
+                category: liquidratios
+                category_name: "Liquidity Ratios"
+              quick_ratio:
+                type: decimal
+                description: "(quick_ratio) Quick Ratio (Acid Test)"
+                category: liquidratios
+                category_name: "Liquidity Ratios"
+
+              at_turn:
+                type: decimal
+                description: "(at_turn) Asset Turnover"
+                category: effratio
+                category_name: "Efficiency Ratios"
+              inv_turn:
+                type: decimal
+                description: "(inv_turn) Inventory Turnover"
+                category: effratio
+                category_name: "Efficiency Ratios"
+              pay_turn:
+                type: decimal
+                description: "(pay_turn) Payables Turnover"
+                category: effratio
+                category_name: "Efficiency Ratios"
+              rect_turn:
+                type: decimal
+                description: "(rect_turn) Receivables Turnover"
+                category: effratio
+                category_name: "Efficiency Ratios"
+              sale_equity:
+                type: decimal
+                description: "(sale_equity) Sales/Stockholders Equity"
+                category: effratio
+                category_name: "Efficiency Ratios"
+              sale_invcap:
+                type: decimal
+                description: "(sale_invcap) Sales/Invested Capital"
+                category: effratio
+                category_name: "Efficiency Ratios"
+              sale_nwc:
+                type: decimal
+                description: "(sale_nwc) Sales/Working Capital"
+                category: effratio
+                category_name: "Efficiency Ratios"
+
+              accrual:
+                type: decimal
+                description: "(accrual) Accruals/Average Assets"
+                category: other
+                category_name: "Other Ratios"
+              rd_sale:
+                type: decimal
+                description: "(rd_sale) Research and Development/Sales"
+                category: other
+                category_name: "Other Ratios"
+              adv_sale:
+                type: decimal
+                description: "(adv_sale) Avertising Expenses/Sales"
+                category: other
+                category_name: "Other Ratios"
+              staff_sale:
+                type: decimal
+                description: "(staff_sale) Labor Expenses/Sales"
+                category: other
+                category_name: "Other Ratios"
+            pipeline:
+              id: gvkey
+              timestamp: public_date
+
+        ffi48:
+          title: "Financial Ratios Industry Level by WRDS (Beta) [Fama-French 48 Industries]"
+          library: "wrds"
+          file: "finratioind/ffi48"
+          storage:
+            path: "./data/raw/wrds/finratioind/ffi48/data.csv.gz"
+            format: csv.gz
+          keys:
+            - gvkey
+            - public_date
+          index:
+            timestamp_column: public_date
+            frequency: "M"
+          wrds_metadata:
+            product: "wrdsapps_finratios"
+            library: "wrdsapps"
+            file: "finratioind"
+            date range:
+              dvar: "public_date"
+              dvar_descr:
+              begdt: 1970-01-31
+              enddt: 2024-12-31
+            last updated on: 2025-06-23
+            update frequency: "Annually"
+          schema:
+            variables:
+              permno:
+                type: int
+                description: "(permno) PERMNO"
+                category: idinfo
+                category_name: "Issue Description Items"
+              gvkey:
+                type: string
+                description: "(gvkey) Global Company Key"
+                category: idinfo
+                category_name: "Issue Description Items"
+              cusip:
+                type: string
+                description: "(cusip) CUSIP"
+                category: idinfo
+                category_name: "Issue Description Items"
+              ticker:
+                type: string
+                description: "(ticker) Ticker Symbol"
+                category: idinfo
+                category_name: "Issue Description Items"
+              ffi48:
+                type: int
+                description: "(ffi48) Fama-French 48 Industry"
+                category: idinfo
+                category_name: "Issue Description Items"
+              ffi48_desc:
+                type: string
+                description: "(ffi48) Fama-French 48 Industry Description"
+                category: idinfo
+                category_name: "Issue Description Items"
+              indret_ew:
+                type: decimal
+                description: "(indret_ew) Industry Return - Equal Weighted"
+                category: idinfo
+                category_name: "Issue Description Items"
+              indret_vw:
+                type: decimal
+                description: "(indret_vw) Industry Return - Value Weighted"
+                category: idinfo
+                category_name: "Issue Description Items"
+              nfirm:
+                type: int
+                description: "(nfirm) The number of companies that belongs to the industry classification"
+                category: idinfo
+                category_name: "Issue Description Items"
+
+              adate:
+                type: date
+                description: "(adate) Announcement Date"
+                category: tsinfo
+                category_name: "Time Series Information"
+              qdate:
+                type: date
+                description: "(qdate) Quarter End Date"
+                category: tsinfo
+                category_name: "Time Series Information"
+              public_date:
+                type: date
+                description: "(public_date) Fiscal Year"
+                category: tsinfo
+                category_name: "Time Series Information"
+
+              dpr:
+                type: decimal
+                description: "(dpr) Dividend Payout Ratio"
+                category: valueratio
+                category_name: "Valuation Ratios"
+              peg_trailing:
+                type: decimal
+                description: "(peg_trailing) Trailing P/E to Growth (PEG) ratio"
+                category: valueratio
+                category_name: "Valuation Ratios"
+              bm:
+                type: decimal
+                description: "(bm) Book/Market"
+                category: valueratio
+                category_name: "Valuation Ratios"
+              capei:
+                type: decimal
+                description: "(capei) Shillers Cyclically Adjusted P/E Ratio"
+                category: valueratio
+                category_name: "Valuation Ratios"
+              divyield:
+                type: decimal
+                description: "(divyield) Dividend Yield"
+                category: valueratio
+                category_name: "Valuation Ratios"
+              evm:
+                type: decimal
+                description: "(evm) Enterprise Value Multiple"
+                category: valueratio
+                category_name: "Valuation Ratios"
+              pcf:
+                type: decimal
+                description: "(pcf) Price/Cash flow"
+                category: valueratio
+                category_name: "Valuation Ratios"
+              pe_exi:
+                type: decimal
+                description: "(pe_exi) P/E (Diluted, Excl. EI)"
+                category: valueratio
+                category_name: "Valuation Ratios"
+              pe_inc:
+                type: decimal
+                description: "(pe_inc) P/E (Diluted, Incl. EI)"
+                category: valueratio
+                category_name: "Valuation Ratios"
+              pe_op_basic:
+                type: decimal
+                description: "(pe_op_basic) Price/Operating Earnings (Basic, Excl. EI)"
+                category: valueratio
+                category_name: "Valuation Ratios"
+              pe_op_dil:
+                type: decimal
+                description: "(pe_op_dil) Price/Operating Earnings (Diluted, Excl. EI)"
+                category: valueratio
+                category_name: "Valuation Ratios"
+              ps:
+                type: decimal
+                description: "(ps) Price/Sales"
+                category: valueratio
+                category_name: "Valuation Ratios"
+              ptb:
+                type: decimal
+                description: "(ptb) Price/Book"
+                category: valueratio
+                category_name: "Valuation Ratios"
+
+              efftax:
+                type: decimal
+                description: "(efftax) Effective Tax Rate"
+                category: profitratio
+                category_name: "Profitability Ratios"
+              gprof:
+                type: decimal
+                description: "(gprof) Gross Profit/Total Assets"
+                category: profitratio
+                category_name: "Profitability Ratios"
+              aftret_eq:
+                type: decimal
+                description: "(aftret_eq) After-tax Return on Average Common Equity"
+                category: profitratio
+                category_name: "Profitability Ratios"
+              aftret_equity:
+                type: decimal
+                description: "(aftret_equity) After-tax Return on Total Stockholders Equity"
+                category: profitratio
+                category_name: "Profitability Ratios"
+              aftret_invcapx:
+                type: decimal
+                description: "(aftret_invcapx) After-tax Return on Invested Capital"
+                category: profitratio
+                category_name: "Profitability Ratios"
+              gpm:
+                type: decimal
+                description: "(gpm) Gross Profit Margin"
+                category: profitratio
+                category_name: "Profitability Ratios"
+              npm:
+                type: decimal
+                description: "(npm) Net Profit Margin"
+                category: profitratio
+                category_name: "Profitability Ratios"
+              opmad:
+                type: decimal
+                description: "(opmad) Operating Profit Margin After Depreciation"
+                category: profitratio
+                category_name: "Profitability Ratios"
+              opmbd:
+                type: decimal
+                description: "(opmbd) Operating Profit Margin Before Depreciation"
+                category: profitratio
+                category_name: "Profitability Ratios"
+              pretret_earnat:
+                type: decimal
+                description: "(pretret_earnat) Pre-tax Return on Total Earning Assets"
+                category: profitratio
+                category_name: "Profitability Ratios"
+              pretret_noa:
+                type: decimal
+                description: "(pretret_noa) Pre-tax return on Net Operating Assets"
+                category: profitratio
+                category_name: "Profitability Ratios"
+              ptpm:
+                type: decimal
+                description: "(ptpm) Pre-tax Profit Margin"
+                category: profitratio
+                category_name: "Profitability Ratios"
+              roa:
+                type: decimal
+                description: "(roa) Return on Assets"
+                category: profitratio
+                category_name: "Profitability Ratios"
+              roce:
+                type: decimal
+                description: "(roce) Return on Capital Employed"
+                category: profitratio
+                category_name: "Profitability Ratios"
+              roe:
+                type: decimal
+                description: "(roe) Return on Equity"
+                category: profitratio
+                category_name: "Profitability Ratios"
+
+              capital_ratio:
+                type: decimal
+                description: "(capital_ratio) Capitalization Ratio"
+                category: capitalratio
+                category_name: "Capitalization Ratios"
+              equity_invcap:
+                type: decimal
+                description: "(equity_invcap) Common Equity/Invested Capital"
+                category: capitalratio
+                category_name: "Capitalization Ratios"
+              debt_invcap:
+                type: decimal
+                description: "(debt_invcap) Long-term Debt/Invested Capital"
+                category: capitalratio
+                category_name: "Capitalization Ratios"
+              totdebt_invcap:
+                type: decimal
+                description: "(totdebt_invcap) Total Debt/Invested Capital"
+                category: capitalratio
+                category_name: "Capitalization Ratios"
+
+              invt_act:
+                type: decimal
+                description: "(invt_act) Inventory/Current Assets"
+                category: finsound
+                category_name: "Financial Soundness"
+              rect_act:
+                type: decimal
+                description: "(rect_act) Receivables/Current Assets"
+                category: finsound
+                category_name: "Financial Soundness"
+              fcf_ocf:
+                type: decimal
+                description: "(fcf_ocf) Free Cash Flow/Operating Cash Flow"
+                category: finsound
+                category_name: "Financial Soundness"
+              ocf_lct:
+                type: decimal
+                description: "(ocf_lct) Operating CF/Current Liabilities"
+                category: finsound
+                category_name: "Financial Soundness"
+              cash_debt:
+                type: decimal
+                description: "(cash_debt) Cash Flow/Total Debt"
+                category: finsound
+                category_name: "Financial Soundness"
+              cash_lt:
+                type: decimal
+                description: "(cash_lt) Cash Balance/Total Liabilities"
+                category: finsound
+                category_name: "Financial Soundness"
+              cfm:
+                type: decimal
+                description: "(cfm) Cash Flow Margin"
+                category: finsound
+                category_name: "Financial Soundness"
+              short_debt:
+                type: decimal
+                description: "(short_debt) Short-Term Debt/Total Debt"
+                category: finsound
+                category_name: "Financial Soundness"
+              profit_lct:
+                type: decimal
+                description: "(profit_lct) Profit Before Depreciation/Current Liabilities"
+                category: finsound
+                category_name: "Financial Soundness"
+              curr_debt:
+                type: decimal
+                description: "(curr_debt) Current Liabilities/Total Liabilities"
+                category: finsound
+                category_name: "Financial Soundness"
+              debt_ebitda:
+                type: decimal
+                description: "(debt_ebitda) Total Debt/EBITDA"
+                category: finsound
+                category_name: "Financial Soundness"
+              dltt_be:
+                type: decimal
+                description: "(dltt_be) Long-term Debt/Book Equity"
+                category: finsound
+                category_name: "Financial Soundness"
+              int_debt:
+                type: decimal
+                description: "(int_debt) Interest/Average Long-term Debt"
+                category: finsound
+                category_name: "Financial Soundness"
+              int_totdebt:
+                type: decimal
+                description: "(int_totdebt) Interest/Average Total Debt"
+                category: finsound
+                category_name: "Financial Soundness"
+              lt_debt:
+                type: decimal
+                description: "(lt_debt) Long-term Debt/Total Liabilities"
+                category: finsound
+                category_name: "Financial Soundness"
+              lt_ppent:
+                type: decimal
+                description: "(lt_ppent) Total Liabilities/Total Tangible Assets"
+                category: finsound
+                category_name: "Financial Soundness"
+
+              de_ratio:
+                type: decimal
+                description: "(de_ratio) Total Debt/Equity"
+                category: solventratios
+                category_name: "Solvency Ratios"
+              debt_assets:
+                type: decimal
+                description: "(debt_assets) Total Liabilities/Total Assets"
+                category: solventratios
+                category_name: "Solvency Ratios"
+              debt_at:
+                type: decimal
+                description: "(debt_at) Total Long Term Debt Plus Debt in Current Liabilities/Total Assets"
+                category: solventratios
+                category_name: "Solvency Ratios"
+              debt_capital:
+                type: decimal
+                description: "(debt_capital) Total Debt/Capital"
+                category: solventratios
+                category_name: "Solvency Ratios"
+              intcov:
+                type: decimal
+                description: "(intcov) After-tax Interest Coverage"
+                category: solventratios
+                category_name: "Solvency Ratios"
+              intcov_ratio:
+                type: decimal
+                description: "(intcov_ratio) Interest Coverage Ratio"
+                category: solventratios
+                category_name: "Solvency Ratios"
+
+              cash_conversion:
+                type: decimal
+                description: "(cash_conversion) Cash Conversion Cycle (Days)"
+                category: liquidratios
+                category_name: "Liquidity Ratios"
+              cash_ratio:
+                type: decimal
+                description: "(cash_ratio) Cash Ratio"
+                category: liquidratios
+                category_name: "Liquidity Ratios"
+              curr_ratio:
+                type: decimal
+                description: "(curr_ratio) Current Ratio"
+                category: liquidratios
+                category_name: "Liquidity Ratios"
+              quick_ratio:
+                type: decimal
+                description: "(quick_ratio) Quick Ratio (Acid Test)"
+                category: liquidratios
+                category_name: "Liquidity Ratios"
+
+              at_turn:
+                type: decimal
+                description: "(at_turn) Asset Turnover"
+                category: effratio
+                category_name: "Efficiency Ratios"
+              inv_turn:
+                type: decimal
+                description: "(inv_turn) Inventory Turnover"
+                category: effratio
+                category_name: "Efficiency Ratios"
+              pay_turn:
+                type: decimal
+                description: "(pay_turn) Payables Turnover"
+                category: effratio
+                category_name: "Efficiency Ratios"
+              rect_turn:
+                type: decimal
+                description: "(rect_turn) Receivables Turnover"
+                category: effratio
+                category_name: "Efficiency Ratios"
+              sale_equity:
+                type: decimal
+                description: "(sale_equity) Sales/Stockholders Equity"
+                category: effratio
+                category_name: "Efficiency Ratios"
+              sale_invcap:
+                type: decimal
+                description: "(sale_invcap) Sales/Invested Capital"
+                category: effratio
+                category_name: "Efficiency Ratios"
+              sale_nwc:
+                type: decimal
+                description: "(sale_nwc) Sales/Working Capital"
+                category: effratio
+                category_name: "Efficiency Ratios"
+
+              accrual:
+                type: decimal
+                description: "(accrual) Accruals/Average Assets"
+                category: other
+                category_name: "Other Ratios"
+              rd_sale:
+                type: decimal
+                description: "(rd_sale) Research and Development/Sales"
+                category: other
+                category_name: "Other Ratios"
+              adv_sale:
+                type: decimal
+                description: "(adv_sale) Avertising Expenses/Sales"
+                category: other
+                category_name: "Other Ratios"
+              staff_sale:
+                type: decimal
+                description: "(staff_sale) Labor Expenses/Sales"
+                category: other
+                category_name: "Other Ratios"
+            pipeline:
+              id: gvkey
+              timestamp: public_date
+
+  fred:
+    daily:
+      date:
+        start: 2000-01-03
+        end: 2024-12-31
+      frequency: "D"
+      variables:
+        SOFR:
+          description: "Secured Overnight Financing Rate"
+          unit: "Percent"
+          adjustment: "Not Seasonally Adjusted"
+          source: "Federal Reserve Bank of New York"
+        EFFR:
+          description: "Effective Federal Funds Rate"
+          unit: "Percent"
+          adjustment: "Not Seasonally Adjusted"
+          source: "Federal Reserve Bank of New York"
+        SOFRINDEX:
+          description: "SOFR Index"
+          unit: "Index Apr 2, 2018 = 1"
+          adjustment: "Not Seasonally Adjusted"
+          source: "Federal Reserve Bank of New York"
+        T10Y3M:
+          description: "10-Year Treasury Constant Maturity Minus 3-Month Treasury Constant Maturity"
+          unit: "Percent"
+          adjustment: "Not Seasonally Adjusted"
+          source: "Federal Reserve Bank of St. Louis"
+        T10Y2Y:
+          description: "10-Year Treasury Constant Maturity Minus 2-Year Treasury Constant Maturity"
+          unit: "Percent"
+          adjustment: "Not Seasonally Adjusted"
+          source: "Federal Reserve Bank of St. Louis"
+        T5YIE:
+          description: "5-Year Breakeven Inflation Rate"
+          unit: "Percent"
+          adjustment: "Not Seasonally Adjusted"
+          source: "Federal Reserve Bank of St. Louis"
+        T10YIE:
+          description: "10-Year Breakeven Inflation Rate"
+          unit: "Percent"
+          adjustment: "Not Seasonally Adjusted"
+          source: "Federal Reserve Bank of St. Louis"
+        T5YIFR:
+          description: "5-Year, 5-Year Forward Inflation Expectation Rate"
+          unit: "Percent"
+          adjustment: "Not Seasonally Adjusted"
+          source: "Federal Reserve Bank of St. Louis"
+        DTB4WK:
+          description: "4-Week Treasury Bill Secondary Market Rate, Discount Basis"
+          unit: "Percent"
+          adjustment: "Not Seasonally Adjusted"
+          source: "Board of Governors of the Federal Reserve System (US)"
+        DTB3:
+          description: "3-Month Treasury Bill Secondary Market Rate, Discount Basis"
+          unit: "Percent"
+          adjustment: "Not Seasonally Adjusted"
+          source: "Board of Governors of the Federal Reserve System (US)"
+        DGS2:
+          description: "Market Yield on U.S. Treasury Securities at 2-Year Constant Maturity, Quoted on an Investment Basis"
+          unit: "Percent"
+          adjustment: "Not Seasonally Adjusted"
+          source: "Board of Governors of the Federal Reserve System (US)"
+        DGS10:
+          description: "Market Yield on U.S. Treasury Securities at 10-Year Constant Maturity, Quoted on an Investment Basis"
+          unit: "Percent"
+          adjustment: "Not Seasonally Adjusted"
+          source: "Board of Governors of the Federal Reserve System (US)"
+        DGS30:
+          description: "Market Yield on U.S. Treasury Securities at 30-Year Constant Maturity, Quoted on an Investment Basis"
+          unit: "Percent"
+          adjustment: "Not Seasonally Adjusted"
+          source: "Board of Governors of the Federal Reserve System (US)"
+        DFII10:
+          description: "Market Yield on U.S. Treasury Securities at 10-Year Constant Maturity, Quoted on an Investment Basis, Inflation-Indexed"
+          unit: "Percent"
+          adjustment: "Not Seasonally Adjusted"
+          source: "Board of Governors of the Federal Reserve System (US)"
+        DTWEXBGS:
+          description: "Nominal Broad U.S. Dollar Index"
+          unit: "Index Jan 2006=100"
+          adjustment: "Not Seasonally Adjusted"
+          source: "Board of Governors of the Federal Reserve System (US)"
+        DEXJPUS:
+          description: "Japanese Yen to U.S. Dollar Spot Exchange Rate"
+          unit: "Japanese Yen to One U.S. Dollar"
+          adjustment: "Not Seasonally Adjusted"
+          source: "Board of Governors of the Federal Reserve System (US)"
+        DEXUSEU:
+          description: "U.S. Dollars to Euro Spot Exchange Rate"
+          unit: "U.S. Dollars to One Euro"
+          adjustment: "Not Seasonally Adjusted"
+          source: "Board of Governors of the Federal Reserve System (US)"
+        RRPONTSYD:
+          description: "Overnight Reverse Repurchase Agreements: Treasury Securities Sold by the Federal Reserve in the Temporary Open Market Operations"
+          unit: "Billions of US Dollars"
+          adjustment: "Not Seasonally Adjusted"
+          source: "Federal Reserve Bank of New York"
+        DCOILWTICO:
+          description: "Crude Oil Prices: West Texas Intermediate (WTI) - Cushing, Oklahoma"
+          unit: "Dollars per Barrel"
+          adjustment: "Not Seasonally Adjusted"
+          source: "U.S. Energy Information Administration"
+        IORB:
+          description: "Interest Rate on Reserve Balances (IORB Rate)"
+          unit: "Percent"
+          adjustment: "Not Seasonally Adjusted"
+          source: "Board of Governors of the Federal Reserve System (US)"
+        CBBTCUSD:
+          description: "Coinbase Bitcoin"
+          unit: "U.S. Dollars"
+          adjustment: "Not Seasonally Adjusted"
+          source: "Coinbase"
+        BAMLH0A0HYM2:
+          description: "ICE BofA US High Yield Index Option-Adjusted Spread"
+          unit: "Percent"
+          adjustment: "Not Seasonally Adjusted"
+          source: "Ice Data Indices, LLC"
+        BAMLHYH0A0HYM2TRIV:
+          description: "ICE BofA US High Yield Index Total Return Index Value"
+          unit: "Index"
+          adjustment: "Not Seasonally Adjusted"
+          source: "Ice Data Indices, LLC"
+        DJIA:
+          description: "Dow Jones Industrial Average"
+          unit: "Index"
+          adjustment: "Not Seasonally Adjusted"
+          source: "S&P Dow Jones Indices LLC"
+        SP500:
+          description: "S&P 500"
+          unit: "Index"
+          adjustment: "Not Seasonally Adjusted"
+          source: "S&P Dow Jones Indices LLC"
+        NASDAQCOM:
+          description: "NASDAQ Composite Index"
+          unit: "Index Feb 5, 1971=100"
+          adjustment: "Not Seasonally Adjusted"
+          source: "Nasdaq, Inc."
+        VIXCLS:
+          description: "CBOE Volatility Index: VIX"
+          unit: "Index"
+          adjustment: "Not Seasonally Adjusted"
+          source: "Chicago Board Options Exchange"
