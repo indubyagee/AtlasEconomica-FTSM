@@ -209,12 +209,33 @@ __marimo__/
 # Misc. folders
 logs/*
 !logs/.gitkeep
-exports/*
-!exports/.gitkeep
-data/*
-!data/.gitkeep
 
-temp/
+#exports/*
+
+raw/*
+!raw/.gitkeep
+
+notebooks/*
+!notebooks/.gitkeep
+!notebooks/chronos/
+
+temp/*
+!temp/.gitkeep
+
+certificates/*
+!certificates/.gitkeep
+
+archive/
+private/
+developer/
+secure/
+
+*.gz
+*.csv.gz
+
+data.csv
+data.csv.gz
+data.parquet
 
 # Development notes
-NOTES.md
+#NOTES.md
