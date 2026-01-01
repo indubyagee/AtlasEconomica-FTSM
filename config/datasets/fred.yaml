@@ -1,0 +1,615 @@
+daily:
+  frequency: daily
+  path: /data/raw/fred/daily/data.csv.gz
+  data:
+  - name: Secured Overnight Financing Rate
+    id: SOFR
+    units: Percent
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Daily
+    source: Federal Reserve Bank of New York
+
+  - name: "Effective Federal Funds Rate"
+    id: EFFR
+    units: Percent
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Daily
+    source: Federal Reserve Bank of New York
+
+  - name: "SOFR Index"
+    id: SOFRINDEX
+    units: Index Apr 2, 2018 = 1
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Daily
+    source: Federal Reserve Bank of New York
+
+  - name: "10-Year Treasury Constant Maturity Minus 3-Month Treasury Constant Maturity"
+    id: T10Y3M
+    units: Percent
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Daily
+    source: Federal Reserve Bank of St. Louis
+
+  - name: "10-Year Treasury Constant Maturity Minus 2-Year Treasury Constant Maturity"
+    id: T10Y2Y
+    units: Percent
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Daily
+    source: Federal Reserve Bank of St. Louis
+
+  - name: "5-Year Breakeven Inflation Rate"
+    id: T5YIE
+    units: Percent
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Daily
+    source: Federal Reserve Bank of St. Louis
+
+  - name: "10-Year Breakeven Inflation Rate"
+    id: T10YIE
+    units: Percent
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Daily
+    source: Federal Reserve Bank of St. Louis
+
+  - name: "5-Year, 5-Year Forward Inflation Expectation Rate"
+    id: T5YIFR
+    units: Percent
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Daily
+    source: Federal Reserve Bank of St. Louis
+
+  - name: "4-Week Treasury Bill Secondary Market Rate, Discount Basis"
+    id: DTB4WK
+    units: Percent
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Daily
+    source: Board of Governors of the Federal Reserve System (US)
+
+  - name: "3-Month Treasury Bill Secondary Market Rate, Discount Basis"
+    id: DTB3
+    units: Percent
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Daily
+    source: Board of Governors of the Federal Reserve System (US)
+
+  - name: "Market Yield on U.S. Treasury Securities at 2-Year Constant Maturity"
+    id: DGS2
+    units: Percent
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Daily
+    source: Board of Governors of the Federal Reserve System (US)
+
+  - name: "Market Yield on U.S. Treasury Securities at 10-Year Constant Maturity"
+    id: DGS10
+    units: Percent
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Daily
+    source: Board of Governors of the Federal Reserve System (US)
+
+  - name: "Market Yield on U.S. Treasury Securities at 30-Year Constant Maturity"
+    id: DGS30
+    units: Percent
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Daily
+    source: Board of Governors of the Federal Reserve System (US)
+
+  - name: "Market Yield on U.S. Treasury Securities at 10-Year Constant Maturity, Inflation-Indexed"
+    id: DFII10
+    units: Percent
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Daily
+    source: Board of Governors of the Federal Reserve System (US)
+
+  - name: "Nominal Broad U.S. Dollar Index"
+    id: DTWEXBGS
+    units: Index Jan 2006=100
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Daily
+    source: Board of Governors of the Federal Reserve System (US)
+
+  - name: "Japanese Yen to U.S. Dollar Spot Exchange Rate"
+    id: DEXJPUS
+    units: Japanese Yen to One U.S. Dollar
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Daily
+    source: Board of Governors of the Federal Reserve System (US)
+
+  - name: "U.S. Dollars to Euro Spot Exchange Rate"
+    id: DEXUSEU
+    units: U.S. Dollars to One Euro
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Daily
+    source: Board of Governors of the Federal Reserve System (US)
+
+  - name: "Overnight Reverse Repurchase Agreements: Treasury Securities Sold by the Federal Reserve"
+    id: RRPONTSYD
+    units: Billions of US Dollars
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Daily
+    source: Federal Reserve Bank of New York
+
+  - name: "Crude Oil Prices: West Texas Intermediate (WTI) - Cushing, Oklahoma"
+    id: DCOILWTICO
+    units: Dollars per Barrel
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Daily
+    source: U.S. Energy Information Administration
+
+  - name: "Interest Rate on Reserve Balances (IORB Rate)"
+    id: IORB
+    units: Percent
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Daily, 7-Day
+    source: Board of Governors of the Federal Reserve System (US)
+
+  - name: "Coinbase Bitcoin"
+    id: CBBTCUSD
+    units: U.S. Dollars
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Daily, 7-Day
+    source: Coinbase
+
+  - name: "ICE BofA US High Yield Index Option-Adjusted Spread"
+    id: BAMLH0A0HYM2
+    units: Percent
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Daily, Close
+    source: Ice Data Indices, LLC
+
+  - name: "ICE BofA US High Yield Index Total Return Index Value"
+    id: BAMLHYH0A0HYM2TRIV
+    units: Index
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Daily, Close
+    source: Ice Data Indices, LLC
+
+  - name: "Dow Jones Industrial Average"
+    id: DJIA
+    units: Index
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Daily, Close
+    source: S&P Dow Jones Indices LLC
+
+  - name: "S&P 500"
+    id: SP500
+    units: Index
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Daily, Close
+    source: S&P Dow Jones Indices LLC
+
+  - name: "NASDAQ Composite Index"
+    id: NASDAQCOM
+    units: Index Feb 5, 1971=100
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Daily, Close
+    source: Nasdaq, Inc.
+
+  - name: "CBOE Volatility Index: VIX"
+    id: VIXCLS
+    units: Index
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Daily, Close
+    source: Chicago Board Options Exchange
+
+weekly:
+  - name: "Chicago Fed Adjusted National Financial Conditions Index"
+    id: ANFCI
+    units: Index
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Weekly, Ending Friday
+    source: Federal Reserve Bank of Chicago
+
+  - name: "Chicago Fed National Financial Conditions Index"
+    id: NFCI
+    units: Index
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Weekly, Ending Friday
+    source: Federal Reserve Bank of Chicago
+
+  - name: "St. Louis Fed Financial Stress Index"
+    id: STLFSI4
+    units: Index
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Weekly, Ending Friday
+    source: Federal Reserve Bank of Chicago
+
+  - name: "Initial Claims"
+    id: ICSA
+    units: Number
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Weekly, Ending Saturday
+    source: U.S. Employment and Training Administration
+
+  - name: "30-Year Fixed Rate Mortgage Average in the United States"
+    id: MORTGAGE30US
+    units: Percent
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Weekly, Ending Thursday
+    source: Freddie Mac
+
+  - name: "Assets: Total Assets (Less Eliminations from Consolidation): Wednesday Level"
+    id: WALCL
+    units: Millions of U.S. Dollars
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Weekly, Ending Wednesday
+    source: Board of Governors of the Federal Reserve System (US)
+
+  - name: "Commercial and Industrial Loans, All Commercial Banks"
+    id: TOTCI
+    units: Billions of U.S. Dollars
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Weekly, Ending Wednesday
+    source: Board of Governors of the Federal Reserve System (US)
+
+  - name: "Bank Credit, All Commercial Banks"
+    id: TOTBKCR
+    units: Billions of U.S. Dollars
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Weekly, Ending Wednesday
+    source: Board of Governors of the Federal Reserve System (US)
+
+monthly:
+  - name: "Federal Funds Effective Rate"
+    id: FEDFUNDS
+    units: Percent
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Monthly
+    source: Board of Governors of the Federal Reserve System (US)
+
+  - name: "30-year Breakeven Inflation Rate"
+    id: T30YIEM
+    units: Percent
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Monthly
+    source: Federal Reserve Bank of St. Louis
+
+  - name: "M2"
+    id: M2SL
+    units: Billions of Dollars
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Monthly
+    source: Board of Governors of the Federal Reserve System (US)
+
+  - name: "Chicago Fed National Activity Index"
+    id: CFNAI
+    units: Index
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Monthly
+    source: Federal Reserve Bank of Chicago
+
+  - name: "University of Michigan: Consumer Sentiment"
+    id: UMCSENT
+    units: Index 1966:Q1=100
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Monthly
+    source: University of Michigan
+
+  - name: "Commercial and Industrial Loans, All Commercial Banks"
+    id: BUSLOANS
+    units: Billions of U.S. Dollars
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Monthly
+    source: Board of Governors of the Federal Reserve System (US)
+
+  - name: "Labor Force Participation Rate"
+    id: CIVPART
+    units: Percent
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Monthly
+    source: U.S. Bureau of Labor Statistics
+
+  - name: "Employment-Population Ratio"
+    id: EMRATIO
+    units: Percent
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Monthly
+    source: U.S. Bureau of Labor Statistics
+
+  - name: "Unemployment Level"
+    id: UNEMPLOY
+    units: Thousands of Persons
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Monthly
+    source: U.S. Bureau of Labor Statistics
+
+  - name: "Unemployment Rate"
+    id: UNRATE
+    units: Percent
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Monthly
+    source: U.S. Bureau of Labor Statistics
+
+  - name: "All Employees, Total Nonfarm"
+    id: PAYEMS
+    units: Thousands of Persons
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Monthly
+    source: U.S. Bureau of Labor Statistics
+
+  - name: "Average Hourly Earnings of All Employees, Total Private"
+    id: CES0500000003
+    units: Dollars per Hour
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Monthly
+    source: U.S. Bureau of Labor Statistics
+
+  - name: "Job Openings: Total Nonfarm"
+    id: JTSJOL
+    units: Level in Thousands
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Monthly
+    source: U.S. Bureau of Labor Statistics
+
+  - name: "Job Openings: Total Private"
+    id: JTS1000JOL
+    units: Level in Thousands
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Monthly
+    source: U.S. Bureau of Labor Statistics
+
+  - name: "Job Openings: Government"
+    id: JTS9000JOL
+    units: Level in Thousands
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Monthly
+    source: U.S. Bureau of Labor Statistics
+
+  - name: "Job Openings: State and Local"
+    id: JTS9200JOL
+    units: Level in Thousands
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Monthly
+    source: U.S. Bureau of Labor Statistics
+
+  - name: "Quits: Total Private"
+    id: JTS1000QUL
+    units: Level in Thousands
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Monthly
+    source: U.S. Bureau of Labor Statistics
+
+  - name: "Quits: Government"
+    id: JTS9000QUL
+    units: Level in Thousands
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Monthly
+    source: U.S. Bureau of Labor Statistics
+
+  - name: "Quits: State and Local"
+    id: JTS9200QUL
+    units: Level in Thousands
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Monthly
+    source: U.S. Bureau of Labor Statistics
+
+  - name: "Quits: Total Nonfarm"
+    id: JTSQUR
+    units: Rate
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Monthly
+    source: U.S. Bureau of Labor Statistics
+
+  - name: "Real Personal Consumption Expenditures"
+    id: PCEC96
+    units: Billions of Chained 2017 Dollars
+    seasonal_adjustment: Seasonally Adjusted Annual Rate
+    frequency: Monthly
+    source: U.S. Bureau of Economic Analysis
+
+  - name: "Disposable Personal Income"
+    id: DSPI
+    units: Billions of Dollars
+    seasonal_adjustment: Seasonally Adjusted Annual Rate
+    frequency: Monthly
+    source: U.S. Bureau of Economic Analysis
+
+  - name: "Trade Balance: Goods and Services, Balance of Payments Basis"
+    id: BOPGSTB
+    units: Millions of Dollars
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Monthly
+    source: U.S. Census Bureau, U.S. Bureau of Economic Analysis
+
+  - name: "NBER based Recession Indicators for the United States"
+    id: USREC
+    units: "+1 or 0"
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Monthly
+    source: Federal Reserve Bank of St. Louis
+
+  - name: "New Privately-Owned Housing Units Authorized in Permit-Issuing Places"
+    id: PERMIT
+    units: Thousands of Units
+    seasonal_adjustment: Seasonally Adjusted Annual Rate
+    frequency: Monthly
+    source: U.S. Census Bureau; U.S. Department of Housing and Urban Development
+
+  - name: "New Privately-Owned Housing Units Started"
+    id: HOUST
+    units: Thousands of Units
+    seasonal_adjustment: Seasonally Adjusted Annual Rate
+    frequency: Monthly
+    source: U.S. Census Bureau; U.S. Department of Housing and Urban Development
+
+  - name: "Industrial Production: Total Index"
+    id: INDPRO
+    units: Index 2017=100
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Monthly
+    source: Board of Governors of the Federal Reserve System (US)
+
+  - name: "Capacity Utilization: Total Index"
+    id: TCU
+    units: Percent
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Monthly
+    source: Board of Governors of the Federal Reserve System (US)
+
+  - name: "Manufacturers' New Orders: Total Manufacturing"
+    id: AMTMNO
+    units: Millions of Dollars
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Monthly
+    source: U.S. Census Bureau
+
+  - name: "Advance Retail Sales: Retail Trade and Food Services"
+    id: RSAFS
+    units: Millions of Dollars
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Monthly
+    source: U.S. Census Bureau
+
+  - name: "Personal Consumption Expenditures: Chain-type Price Index"
+    id: PCEPI
+    units: Index 2017=100
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Monthly
+    source: U.S. Bureau of Economic Analysis
+
+  - name: "Personal Consumption Expenditures: Excluding Food and Energy"
+    id: PCEPILFE
+    units: Index 2017=100
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Monthly
+    source: U.S. Bureau of Economic Analysis
+
+  - name: "Consumer Price Index for All Urban Consumers: All Items"
+    id: CPIAUCSL
+    units: Index 1982-1984=100
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Monthly
+    source: U.S. Bureau of Labor Statistics
+
+  - name: "Consumer Price Index for All Urban Consumers: All Items Less Food and Energy"
+    id: CPILFESL
+    units: Index 1982-1984=100
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Monthly
+    source: U.S. Bureau of Labor Statistics
+
+  - name: "S&P Case-Shiller U.S. National Home Price Index"
+    id: CSUSHPISA
+    units: Index Jan 2000=100
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Monthly
+    source: S&P Dow Jones Indices LLC
+
+  - name: "Producer Price Index by Commodity: All Commodities"
+    id: PPIACO
+    units: Index 1982=100
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Monthly
+    source: U.S. Bureau of Labor Statistics
+
+  - name: "Producer Price Index by Commodity: Final Demand"
+    id: PPIFIS
+    units: Index Nov 2009=100
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Monthly
+    source: U.S. Bureau of Labor Statistics
+
+  - name: "Composite Leading Indicators: Consumer Confidence (US)"
+    id: CSCICP03USM665S
+    units: Normalised (Normal=100)
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Monthly
+    source: Organization for Economic Co-operation and Development
+
+  - name: "Composite Leading Indicators: Business Confidence (US)"
+    id: BSCICP03USM665S
+    units: Normalised (Normal=100)
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Monthly
+    source: Organization for Economic Co-operation and Development
+
+  - name: "Smoothed U.S. Recession Probabilities"
+    id: RECPROUSM156N
+    units: Percent
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Monthly
+    source: Chauvet, Marcelle; Piger, Jeremy Max
+
+quarterly:
+  - name: "Real Gross Domestic Product"
+    id: GDPC1
+    units: Billions of Chained 2017 Dollars
+    seasonal_adjustment: Seasonally Adjusted Annual Rate
+    frequency: Quarterly
+    source: U.S. Bureau of Economic Analysis
+
+  - name: "Consumer Debt Service Payments as a Percent of Disposable Personal Income"
+    id: CDSP
+    units: Percent
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Quarterly
+    source: Board of Governors of the Federal Reserve System (US)
+
+  - name: "Household Debt Service Payments as a Percent of Disposable Personal Income"
+    id: TDSP
+    units: Percent
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Quarterly
+    source: Board of Governors of the Federal Reserve System (US)
+
+  - name: "Mortgage Debt Service Payments as a Percent of Disposable Personal Income"
+    id: MDSP
+    units: Percent
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Quarterly
+    source: Board of Governors of the Federal Reserve System (US)
+
+  - name: "Global Price Index of All Commodities"
+    id: PALLFNFINDEXQ
+    units: Index 2016 = 100
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Quarterly
+    source: International Monetary Fund
+
+  - name: "Employment Cost Index: Total compensation: All Civilian"
+    id: ECIALLCIV
+    units: Index Dec 2005=100
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Quarterly
+    source: U.S. Bureau of Labor Statistics
+
+  - name: "Employment Cost Index: Wages and Salaries: Private Industry Workers"
+    id: ECIWAG
+    units: Index Dec 2005=100
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Quarterly
+    source: U.S. Bureau of Labor Statistics
+
+  - name: "Employment Cost Index: Wages and Salaries for All Civilian Workers in All Industries and Occupations"
+    id: CIS1020000000000I
+    units: Index Dec 2005=100
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Quarterly
+    source: U.S. Bureau of Labor Statistics
+
+  - name: "Household Debt to GDP for United States"
+    id: HDTGPDUSQ163N
+    units: Ratio
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Quarterly
+    source: International Monetary Fund
+
+  - name: "Economic Policy Uncertainty Index for United States"
+    id: USEPUINDXD
+    units: Index
+    seasonal_adjustment: Not Seasonally Adjusted
+    frequency: Quarterly
+    source: Baker, Scott R.; Bloom, Nick; Davis, Steven J.
+
+  - name: "Delinquency Rate on Business Loans, All Commercial Banks"
+    id: DRBLACBS
+    units: Percent
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Quarterly, End of Period
+    source: Board of Governors of the Federal Reserve System (US)
+
+  - name: "Delinquency Rate on Single-Family Residential Mortgages, Booked in Domestic Offices, All Commercial Banks"
+    id: DRSFRMACBS
+    units: Percent
+    seasonal_adjustment: Seasonally Adjusted
+    frequency: Quarterly, End of Period
+    source: Board of Governors of the Federal Reserve System (US)

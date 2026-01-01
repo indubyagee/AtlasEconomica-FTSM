@@ -1,0 +1,722 @@
+wrds :
+  data-dictionary :
+    Products :
+      - Product: CRSP Stock - Version 2 (CIZ) (Annual)
+        Last Updated: 2025-02-08 03:31:00 PM
+        Update Frequency: Annually
+        Postgres Schema: crsp_a_stock
+        Library: crsp
+        Date Range:
+          Start: 1916-01-01
+          End: 2099-04-01
+        Link: https://wrds-www.wharton.upenn.edu/data-dictionary/crsp_a_stock/
+        Tables :
+        - Table : wrds_dailyindexret_query
+          Description : Daily Stock Market Index Return query created by WRDS
+          Postgres Schema:	crsp_a_stock
+          Library:	crsp
+          Row Count:	26,051
+          Table Size:	3.0 MiB
+          Date Range:	
+            - Variable: dlycaldt
+              Variable Description: Daily Calendar Date
+              Start: 1925-12-31
+              End: 2024-12-31
+        - Table : wrds_monthlyindexret_query
+          Description : Monthly Stock Market Index Return query created by WRDS
+          Postgres Schema:	crsp_a_stock
+          Library:	crsp
+          Row Count:	1,189
+          Table Size:	176 KiB
+          Date Range:	
+            - Variable: mthcaldt
+              Variable Description: Monthly Calendar Date
+              Start: 1925-12-31
+              End: 2024-12-31
+        - Table : wrds_dsfv2_query
+          Description : Daily Stock File query created by WRDS
+          Postgres Schema:	crsp_a_stock
+          Library:	crsp
+          Row Count:	107,731,903
+          Table Size:	47.97 GiB
+          Date Range:	
+            - Variable: dlycaldt
+              Variable Description: Daily Calendar Date
+              Start: 1925-12-31
+              End: 2024-12-31
+            - Variable: securityenddt
+              Variable Description: End Date of Stock Data
+              Start: 1926-02-24
+              End: 2024-12-31
+            - Variable: securitybegdt
+              Variable Description: Begin Date of Stock Data
+              Start: 1925-12-31
+              End: 2024-12-31
+            - Variable: secinfoenddt
+              Variable Description: Security Information End Date
+              Start: 1926-02-24
+              End: 2024-12-31
+            - Variable: secinfostartdt
+              Variable Description: Security Information Start Date
+              Start: 1925-12-31
+              End: 2024-12-31
+            - Variable: disexdt
+              Variable Description: Ex-Distribution Date
+              Start: 1926-01-04
+              End: 2024-12-30
+            - Variable: disdeclaredt
+              Variable Description: Declaration Date
+              Start: 1961-10-03
+              End: 2024-12-31
+            - Variable: disrecorddt
+              Variable Description: Record Date
+              Start: 1926-01-05
+              End: 2024-12-31
+            - Variable: dispaydt
+              Variable Description: Payment Date
+              Start: 1926-01-07
+              End: 2025-05-07
+            - Variable: shrstartdt
+              Variable Description: Share Information Start Date
+              Start: 1925-12-31
+              End: 2024-12-31
+            - Variable: shrenddt
+              Variable Description: Share Information End Date
+              Start: 1926-01-01
+              End: 2024-12-31
+            - Variable: dlyprevdt
+              Variable Description: Daily Previous Price Date
+              Start: 1925-12-31
+              End: 2024-12-30
+        - Table : wrds_msfv2_query
+          Description : Monthly Stock File query created by WRDS
+          Postgres Schema:	crsp_a_stock
+          Library:	crsp
+          Row Count:	5,179,742
+          Table Size:	2.23 GiB
+          Date Range:
+            - Variable: mthcaldt
+              Variable Description: Monthly Calendar Date
+              Start: 1925-12-31
+              End: 2024-12-31
+            - Variable: securityenddt
+              Variable Description: End Date of Stock Data
+              Start: 1926-02-24
+              End: 2024-12-31
+            - Variable: securitybegdt
+              Variable Description: Begin Date of Stock Data
+              Start: 1925-12-31
+              End: 2024-12-31
+            - Variable: secinfoenddt
+              Variable Description: Security Information End Date
+              Start: 1926-02-24
+              End: 2024-12-31
+            - Variable: secinfostartdt
+              Variable Description: Security Information Start Date
+              Start: 1925-12-31
+              End: 2024-12-31
+            - Variable: disexdt
+              Variable Description: Ex-Distribution Date
+              Start: 1926-01-04
+              End: 2024-12-30
+            - Variable: disdeclaredt
+              Variable Description: Declaration Date
+              Start: 1961-10-03
+              End: 2024-12-31
+            - Variable: disrecorddt
+              Variable Description: Record Date
+              Start: 1926-01-05
+              End: 2024-12-31
+            - Variable: dispaydt
+              Variable Description: Payment Date
+              Start: 1926-01-07
+              End: 2025-05-07
+            - Variable: shrstartdt
+              Variable Description: Share Information Start Date
+              Start: 1925-12-31
+              End: 2024-12-31
+            - Variable: shrenddt
+              Variable Description: Share Information End Date
+              Start: 1926-01-01
+              End: 2024-12-31
+            - Variable: mthprcdt
+              Variable Description: Monthly Price Date
+              Start: 1925-12-31
+              End: 2024-12-31        
+            - Variable: mthprevdt
+              Variable Description: Monthly Previous Price Date
+              Start: 1925-12-31
+              End: 2024-12-30
+        - Table : wrds_names_query
+          Description : Historical names file for web query created by WRDS
+          Postgres Schema:	crsp_a_stock
+          Library:	crsp
+          Row Count:	186,251
+          Table Size:	26.5 MiB
+          Date Range:
+            - Variable: securityenddt
+              Variable Description: End Date of Stock Data
+              Start: 1926-02-24
+              End: 2024-12-31
+            - Variable: secinfoenddt
+              Variable Description: Security Information End Date
+              Start: 1926-02-24
+              End: 2024-12-31
+            - Variable: secinfostartdt
+              Variable Description: Security Information Start Date
+              Start: 1925-12-31
+              End: 2024-12-31
+            - Variable: securitybegdt
+              Variable Description: Begin Date of Stock Data
+              Start: 1925-12-31
+              End: 2024-12-31
+        - Table : stkdelists
+          Description : Stock Delisting Information
+          Postgres Schema:	crsp_a_stock
+          Library:	crsp
+          Row Count:	29,135
+          Table Size:	3.3 MiB
+          Date Range:
+            - Variable: delistingdt
+              Variable Description: Delisting Date
+              Start: 1926-02-24
+              End: 2024-12-30
+            - Variable: delnextdt
+              Variable Description: Delisting Next Price Date
+              Start: 1926-02-27
+              End: 2024-12-31
+            - Variable: delamtdt
+              Variable Description: Delisting Amount Date
+              Start: 1926-02-27
+              End: 2024-12-31
+            - Variable: deldlydt
+              Variable Description: Delisting Daily Date
+              Start: 1926-02-25
+              End: 2024-12-31
+        - Table : stkdistributions
+          Description : Stock Distribution Information
+          Postgres Schema:	crsp_a_stock
+          Library:	crsp
+          Row Count:	1,064,674
+          Table Size:	103.3 MiB
+          Date Range:
+            - Variable: disexdt
+              Variable Description: Ex-Distribution Date
+              Start: 1926-01-04
+              End: 2024-12-30
+            - Variable: dispaydt
+              Variable Description: Payment Date
+              Start: 1926-01-07
+              End: 2025-05-07
+            - Variable: disdeclaredt
+              Variable Description: Declaration Date
+              Start: 1961-10-03
+              End: 2024-12-31
+            - Variable: disrecorddt
+              Variable Description: Record Date
+              Start: 1926-01-05
+              End: 2024-12-31
+        - Table : stksecurityinfohdr
+          Description : Stock Security Information Header
+          Postgres Schema:	crsp_a_stock
+          Library:	crsp
+          Row Count:	38,872
+          Table Size:	9.6 MiB
+          Date Range:
+            - Variable: securitybegdt
+              Variable Description: Begin Date of Stock Data
+              Start: 1925-12-31
+              End: 2024-12-31
+            - Variable: securityenddt
+              Variable Description: End Date of Stock Data
+              Start: 1926-02-24
+              End: 2024-12-31
+            - Variable: secinfoenddt
+              Variable Description: Security Information End Date
+              Start: 1926-02-24
+              End: 2024-12-31
+            - Variable: secinfostartdt
+              Variable Description: Security Information Start Date
+              Start: 1925-12-31
+              End: 2024-12-31
+        - Table : stkshares
+          Description : Stock Shares Outstanding Information
+          Postgres Schema:	crsp_a_stock
+          Library:	crsp
+          Row Count:	2,938,445
+          Table Size:	168.6 MiB
+          Date Range:
+            - Variable: shrstartdt
+              Variable Description: Share Information Start Date
+              Start: 1925-12-31
+              End: 2024-12-31
+            - Variable: shrenddt
+              Variable Description: Share Information End Date
+              Start: 1926-01-01
+              End: 2024-12-31
+
+      - Product: CRSP Treasuries (Annual) (crsp_a_treasuries)
+        Last Updated: 2025-02-08 12:20:00 PM
+        Update Frequency:	Annually
+        Postgres Schema: crsp_a_treasuries
+        Library: crsp
+        Date Range:
+          Start: 1923-01-01
+          End: 2099-12-31
+        Link: https://wrds-www.wharton.upenn.edu/data-dictionary/crsp_a_treasuries/
+        Tables :
+        - Table : tfz_dly
+          Description : Daily Time Series Items
+          Row Count :	3,496,329
+          Table Size : 517.9 MiB
+          Date Range:
+            - Variable: caldt
+              Variable Description:
+              Start: 1961-06-14
+              End: 2024-12-31
+        - Table : tfz_mth
+          Description : Monthly Time Series Items
+          Row Count:	191,614
+          Table Size:	31.2 MiB
+          Date Range:
+            - Variable: mcaldt
+              Variable Description:
+              Start: 1925-12-31
+              End: 2024-12-31
+
+      - Product: Compustat North America - daily updates (current + historical data) (comp_na_daily_all)
+        Last Updated: 2025-12-23 5:34:00 AM
+        Update Frequency:	Daily
+        Postgres Schema: comp_na_daily_all
+        Library: comp
+        Date Range:	
+          Start: 1900-01-01
+          End: 2025-12-23
+        Total Size:	94.31 GiB
+        Link: https://wrds-www.wharton.upenn.edu/data-dictionary/comp_na_daily_all/
+        Tables :
+        - Table : aco_indsta
+          Description: 	Industry-Specific Annual Item
+          Row Count: 58,093
+          Table Size: 23.5 MiB
+          Date Range: 
+            - Variable: datadate
+              Variable Description: Data Date
+              Start: 1951-08-31
+              End: 2025-12-22
+        - Table : aco_indstq
+          Description: Industry-Specific Quarterly Item
+          Row Count: 216,324
+          Table Size: 47.9 MiB
+          Date Range: 
+            - Variable: datadate
+              Variable Description: Data Date
+              Start: 1962-02-08
+              End: 2025-12-22
+        - Table : aco_pnfnda
+          Description: Pension Annual Item
+          Row Count: 153,614
+          Table Size: 26.7 MiB
+          Date Range: 
+            - Variable: datadate
+              Variable Description: Data Date
+              Start: 1973-06-30
+              End: 2025-12-22
+        - Table : aco_pnfndq
+          Description: Pension Quarterly Item
+          Row Count: 624,701
+          Table Size: 48.1 MiB
+          Date Range: 
+            - Variable: datadate
+              Variable Description: Data Date
+              Start: 1996-07-31
+              End: 2025-12-22
+        - Table : funda
+          Description: Merged Fundamental Annual File
+          Row Count: 922,873
+          Table Size: 933.5 MiB
+          Date Range: 
+          - Variable: datadate
+            Variable Description: Data Date
+            Start: 1950-06-30
+            End: 2025-12-22
+          - Variable: fyear
+            Variable Description: Data Year - Fiscal
+            Start: 1950-01-01
+            End: 2025-12-22
+          - Variable: apdedate
+            Variable Description: Actual Period End date
+            Start: 2002-12-31
+            End: 2025-11-30
+
+          - Variable: fdate
+            Variable Description: Final Date
+            Start: 2006-08-02
+            End: 2025-12-22
+
+          - Variable: pdate
+            Variable Description: Preliminary Date
+            Start: 2001-09-13
+            End: 2025-12-19
+        - Table : fundq
+          Description: Merged Fundamental Quarterly File
+          Row Count: 2,094,234
+          Table Size: 2.05 GiB
+          Date Range: 
+          - Variable: datadate
+            Variable Description: Data Date
+            Start: 1961-03-31
+            End: 2025-12-22
+          - Variable: pdateq
+            Variable Description: Preliminary Date
+            Start: 2006-08-18
+            End: 2025-12-22
+          - Variable: fyearq
+            Variable Description: Fiscal Year
+            Start: 1961-01-01
+            End: 2025-12-22
+          - Variable: apdedateq
+            Variable Description: Actual Period End date
+            Start: 2002-03-31
+            End: 2025-11-30
+          - Variable: rdq
+            Variable Description: Report Date of Quarterly Earnings
+            Start: 1971-07-28
+            End: 2025-12-19
+          - Variable: fdateq
+            Variable Description: Final Date
+            Start: 1994-12-15
+            End: 2025-12-22
+        - Table : idx_ann
+          Description: Index Annual
+          Row Count: 25,978
+          Table Size: 10.6 MiB
+          Date Range: 
+          - Variable: datadate
+            Variable Description: Data Date - Index Annual
+            Start: 1990-12-31
+            End: 2025-12-22
+        - Table : idx_daily
+          Description: Index Daily
+          Row Count: 8,506,394
+          Table Size: 755.7 MiB
+          Date Range: 
+          - Variable: datadate
+            Variable Description: Data Date - Index Daily
+            Start: 1978-12-29
+            End: 2025-12-22
+        - Table : secd
+          Description: Merged Security Daily File
+          Row Count: 157,221,484
+          Table Size: 25.36 GiB
+          Date Range:
+          - Variable: datadate
+            Variable Description: Data Date - Dividends
+            Start: 1983-12-30
+            End: 2025-12-22
+          - Variable: anncdate
+            Variable Description: Dividend Declaration Date
+            Start: 1988-10-09
+            End: 2025-12-22
+          - Variable: cheqvpaydate
+            Variable Description: Cash Equivalent Distributions per Share Payment Date
+            Start: 1984-01-03
+            End: 2025-12-31
+          - Variable: paydate
+            Variable Description: Dividend Payment Date
+            Start: 1984-01-01
+            End: 2027-01-08
+          - Variable: recorddate
+            Variable Description: Dividend Record Date
+            Start: 1989-12-01
+            End: 2026-12-15
+          - Variable: divrcpaydate
+            Variable Description: Return of Capital - Daily Payment Date
+            Start: 1998-03-31
+            End: 2026-01-15
+          - Variable: capgnpaydate
+            Variable Description: Capital Gains Payment Date
+            Start: 1984-03-30
+            End: 2026-01-05
+          - Variable: divsppaydate
+            Variable Description: Special Cash Dividends - Daily Payment Date
+            Start: 1984-01-16
+            End: 2026-10-06
+          - Variable: divdpaydate
+            Variable Description: Cash Dividends - Daily Payment Date
+            Start: 1984-01-01
+            End: 2027-01-08
+        - Table : secm
+          Description: Merged Security Monthly File
+          Row Count: 8,367,198
+          Table Size: 1.46 GiB
+          Date Range: 
+          - Variable: datadate
+            Variable Description: Data Date - Security Monthly
+            Start: 1962-01-31
+            End: 2025-12-22
+        - Table : sec_shortint
+          Description: Security Short Interest
+          Row Count: 4,989,293
+          Table Size: 281.8 MiB
+          Date Range: 
+          - Variable: datadate
+            Variable Description: Short Interest Settlement Date
+            Start: 2006-07-14
+            End: 2025-12-22
+          - Variable: splitadjdate
+            Variable Description: Month End Split Adjustment Date
+            Start: 2006-07-14
+            End: 2025-12-15
+
+      - Product: Compustat Global - daily updates (comp_global_daily)
+        Last Updated: 2025-12-23 3:12:00 PM
+        Update Frequency:	Daily
+        Postgres Schema: comp_global_daily
+        Library: comp
+        Date Range:	
+          Start: 1900-01-01
+          End: 2025-12-23
+        Total Size:	119.61 GiB
+        Link: https://wrds-www.wharton.upenn.edu/data-dictionary/comp_global_daily/
+        Tables:
+        - Table: g_funda
+          Description: Merged Global Fundamental Annual File
+          Row Count: 1,049,246
+          Table Size: 979.8 MiB
+          Date Range:
+          - Variable: datadate
+            Variable Description: Data Date
+            Start: 1987-06-01
+            End: 2025-12-22
+          - Variable: fyear
+            Variable Description: Data Year - Fiscal
+            Start: 1987-06-01
+            End: 2025-12-22
+          - Variable: fdate
+            Variable Description: Final Date
+            Start: 2006-08-17
+            End: 2025-12-22
+          - Variable: pdate
+            Variable Description: Preliminary Date
+            Start: 2005-11-30
+            End: 2025-12-23
+        - Table: g_fundq
+          Description: Merged Fundamental Quarterly File
+          Row Count: 3,986,138
+          Table Size: 2.73 GiB
+          Date Range:
+          - Variable: datadate
+            Variable Description: Data Date
+            Start: 1987-06-01
+            End: 2025-12-22
+          - Variable: fyearq
+            Variable Description: Fiscal Year
+            Start: 1987-06-01
+            End: 2025-12-22
+          - Variable: fdateq
+            Variable Description: Final Date
+            Start: 2006-08-18
+            End: 2025-12-22
+          - Variable: pdateq
+            Variable Description: Preliminary Date
+            Start: 2003-06-30
+            End: 2025-12-23
+        - Table: g_idx_daily
+          Description: Index Daily
+          Row Count: 4,178,308
+          Table Size: 239.7 MiB
+          Date Range:
+          - Variable: datadate
+            Variable Description: Data Date - Index Daily
+            Start: 1985-12-31
+            End: 2025-12-22
+          Variables:
+          - name: datadate
+            type: date
+            length: null
+            description: Data Date - Index Daily
+          - name: dvpsxd
+            type: decimal
+            length: 28
+            scale: 8
+            description: Index Daily Dividends
+          - name: gvkeyx
+            type: char
+            length: 6
+            description: Global Index Key - Index Daily
+          - name: newnum
+            type: integer
+            length: 32
+            description: Index Number - New
+          - name: oldnum
+            type: integer
+            length: 32
+            description: Index Number - Old
+          - name: prccd
+            type: decimal
+            length: 28
+            scale: 8
+            description: Index Price - Close Daily
+          - name: prccddiv
+            type: decimal
+            length: 28
+            scale: 8
+            description: Index Value - Total Return
+          - name: prccddivn
+            type: decimal
+            length: 28
+            scale: 8
+            description: Index Value - Total Return - Net Dividends
+          - name: prchd
+            type: decimal
+            length: 28
+            scale: 8
+            description: Index Price - High Daily
+          - name: prcld
+            type: decimal
+            length: 28
+            scale: 8
+            description: Index Price - Low Daily
+        - Table: g_idx_mth
+          Description: Index Monthly
+          Row Count: 195,762
+          Table Size: 12.9 MiB
+          Date Range:
+          - Variable: datadate
+            Variable Description: Data Date - Index Monthly
+            Start: 1985-12-31
+            End: 2025-12-22
+          Variables:
+          - name: ajexm
+            type: decimal
+            length: 28
+            scale: 8
+            description: Adjustment Factor
+          - name: bkvlps
+            type: decimal
+            length: 28
+            scale: 8
+            description: Book Value Per Share - Index
+          - name: cshtrm
+            type: decimal
+            length: 28
+            scale: 8
+            description: Common Shares Traded
+          - name: datadate
+            type: date
+            length: null
+            description: Data Date - Index Monthly
+          - name: dvpsxm
+            type: decimal
+            length: 28
+            scale: 8
+            description: Dividend Per Share - Index
+          - name: dvrate
+            type: decimal
+            length: 28
+            scale: 8
+            description: Indicated Annual Dividend
+          - name: epsx12
+            type: decimal
+            length: 28
+            scale: 8
+            description: Earnings Per Share - 12MM - Index
+          - name: gvkeyx
+            type: char
+            length: 6
+            description: Global Index Key - Index Monthly
+          - name: prccm
+            type: decimal
+            length: 28
+            scale: 8
+            description: Index Price - Close Monthly
+          - name: prccmdiv
+            type: decimal
+            length: 28
+            scale: 8
+            description: Index Value - Total Return Monthly
+          - name: prccmdivn
+            type: decimal
+            length: 28
+            scale: 8
+            description: Index Value - Total Return Net Monthly
+          - name: prccmdivnusd
+            type: decimal
+            length: 28
+            scale: 8
+            description: Index Value - Total Return Net Monthly - US Dollars
+          - name: prccmdivusd
+            type: decimal
+            length: 28
+            scale: 8
+            description: Index Value - Total Return Monthly - US Dollars
+          - name: prccmhdgaud
+            type: decimal
+            length: 28
+            scale: 8
+            description: Index Value - Close Monthly - Australian Dollar
+          - name: prccmhdgeur
+            type: decimal
+            length: 28
+            scale: 8
+            description: Index Value - Close Monthly - EUR
+          - name: prccmhdggbp
+            type: decimal
+            length: 28
+            scale: 8
+            description: Index Value - Close Monthly - British Pound
+          - name: prccmhdgjpy
+            type: decimal
+            length: 28
+            scale: 8
+            description: Index Value - Close Monthly - Japanese Yen
+          - name: prccmhdgusd
+            type: decimal
+            length: 28
+            scale: 8
+            description: Index Value - Close Monthly - US Dollars
+          - name: prccmusd
+            type: decimal
+            length: 28
+            scale: 8
+            description: Index Price - Close Monthly - US Dollars
+          - name: prchm
+            type: decimal
+            length: 28
+            scale: 8
+            description: Index Price - High Monthly
+          - name: prclm
+            type: decimal
+            length: 28
+            scale: 8
+            description: Index Price - Low Monthly
+
+      - Product: WRDS Financial Ratios (base)
+        Last Updated: 2025-06-23 6:28:00 PM
+        Update Frequency:	Annually
+        Postgres Schema: wrdsapps_finratio
+        Library: wrdsapps
+        Date Range:	
+          Start: 1968-12-31
+          End: 2024-12-31
+        Total Size:	2.01 GiB
+        Link: https://wrds-www.wharton.upenn.edu/data-dictionary/comp_global_daily/wrdsapps_finratio/
+        Tables:
+        - Table: firm_ratio
+          Description: None
+          Row Count: 2,835,219
+          Table Size: 2.01 GiB
+          Date Range:
+          - Variable: public_date
+            Variable Description: Date
+            Start: 1970-01-31
+            End: 2024-12-31
+          - Variable: adate
+            Variable Description: Fiscal year end
+            Start: 1968-12-31
+            End: 2024-10-31
+          - Variable: qdate
+            Variable Description: Fiscal quarter end
+            Start: 1969-06-30
+            End: 2024-10-31

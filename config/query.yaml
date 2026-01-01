@@ -1,0 +1,9 @@
+target: 
+  ticker: MSFT
+covariates:
+  ticker : [NVDA, AAPL, TSLA]
+  fund :
+  index :
+  macro :
+dataset : "/data/raw/crsp/dsfv2/data.parquet"
+variables : [permno, ticker, permco, cusip, dlycaldt, dlyprc, dlyprevprc, dlyvol, shrout]

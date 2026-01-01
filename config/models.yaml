@@ -1,0 +1,9 @@
+TSFM :
+  model: "chronos-2"
+  target: "MSFT_dlyret"   # Column name containing values to forecast
+  prediction_length: 30   # Number of days to forecast ahead
+  id_column: "id"         # Column identifying different
+  timestamp_column: "timestamp"  # Column containing datetime information
+  id_value: target        # Specific time series to visualize
+  cross_learning: True
+  batch_size: 100

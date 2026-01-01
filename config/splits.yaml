@@ -1,0 +1,10 @@
+datasets:
+  crsp:
+    dsfv2:
+      splits:
+        method: "time_windows"
+        context: {start: "2000-01-01", end: "2021-12-31"}
+        validation: {start: "2022-01-01", end: "2022-12-31"}
+        test: {start: "2023-01-01", end: "2023-12-31"}
+        # optional: do you split separately per permno?
+        partition_by: [permco]
